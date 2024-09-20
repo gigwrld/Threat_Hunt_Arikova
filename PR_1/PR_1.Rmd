@@ -104,24 +104,6 @@ editor: "visual"
 
 ### Шаг 5. Выполнение покурсов
 #### 5.1. Basic Building Blocks
-Выводы по подкурсу Basic Building Blocks: 
-1. Способ присвоения значения переменной в R заключается в использовании оператора присваивания, который представляет собой просто символ "меньше, чем", за которым следует знак "минус". Это выглядит следующим образом: <-
-2. Чтобы просмотреть содержимое переменной, необходимо ввести ее и нажать Enter
-3. Любой объект, содержащий данные называются структурой данных, а числовые векторы являются простейшим типом структуры данных в R. На самом деле, даже одно число считается вектором длиной в единицу.
-4. Самый простой способ создать вектор - это использовать функцию c()
-    `z <- c(1.1, 9, 3.14)`
-5.  В любое время, когда у вас возникнут вопросы по той или иной функции, вы можете получить доступ к встроенной справке с помощью команды "?"
-6.Можно объединить векторы, чтобы создать новый вектор.
-    `(z, 555, z)`
-    `[1]   1.10   9.00   3.14 555.00   1.10   9.00   3.14`
-7.Числовые векторы могут использоваться в арифметических выражениях.
-    `z * 2 + 100`
-    `[1] 102.20 118.00 106.28`
-    Сначала R умножил каждый из трех элементов в z на 2. Затем он добавил по 100 к каждому элементу.
-8. Чтобы извлечь квадратный корень, используйте функцию sqrt(), а чтобы получить абсолютное значение, используйте функцию abs().
-    `my_sqrt <- sqrt(z - 1)`
-    `my_sqrt`
-    `[1] 0.3162278 2.8284271 1.4628739`
 
 >  | If at any point you'd like more information on a particular topic related to R, you can type
 | help.start() at the prompt, which will open a menu of resources (either within RStudio or
@@ -154,9 +136,6 @@ editor: "visual"
 
 `x <- 5 + 7`
 
->| Keep working like that and you'll get there!
-
-
 >| You'll notice that R did not print the result of 12 this time. When you use the assignment
 | operator, R assumes that you don't want to see the result immediately, but rather that you
 | intend to use the result for something else later on.
@@ -168,19 +147,16 @@ editor: "visual"
 
 [1] 12
 
->| All that hard work is paying off!
-
 >| Now, store the result of x - 3 in a new variable called y.
 
 `y <- x-3`
 
->| You are doing so well!
-| What is the value of y? Type y to find out.
+
+>| What is the value of y? Type y to find out.
 
 `y`
-[1] 9
 
->| All that hard work is paying off!
+[1] 9
 
 >| Now, let's create a small collection of numbers called a vector. Any object that contains
 | data is called a data structure and numeric vectors are the simplest type of data structure
@@ -193,8 +169,6 @@ editor: "visual"
 
 `z <- c(1.1, 9, 3.14)`
 
->| You are amazing!
-
 >| Anytime you have questions about a particular function, you can access R's built-in help
 | files via the `?` command. For example, if you want more information on the c() function,
 | type ?c without the parentheses that normally follow a function name. Give it a try.
@@ -202,9 +176,6 @@ editor: "visual"
 `?c`
 
  ![*5.1. Запуск курса*](./Images/question.png)
- 
->| Your dedication is inspiring!
-
 
 >| Type z to view its contents. Notice that there are no commas separating the values in the
 | output.
@@ -212,8 +183,6 @@ editor: "visual"
 `z`
 
 [1] 1.10 9.00 3.14
-
->| You are really on a roll!
 
 >| You can combine vectors to make a new vector. Create a new vector that contains z, 555, then
 | z again in that order. Don't assign this vector to a new variable, so that we can just see
@@ -223,16 +192,12 @@ editor: "visual"
 
 [1]   1.10   9.00   3.14 555.00   1.10   9.00   3.14
 
->| That's a job well done!
-
 >| Numeric vectors can be used in arithmetic expressions. Type the following to see what
 | happens: z * 2 + 100.
 
 `z * 2 + 100`
 
 [1] 102.20 118.00 106.28
-
->| You got it!
 
 >| First, R multiplied each of the three elements in z by 2. Then it added 100 to each element
 | to get the result you see above.
@@ -245,8 +210,6 @@ editor: "visual"
 
 `my_sqrt <- sqrt(z - 1)`
 
->| You are amazing!
-
 >| Before we view the contents of the my_sqrt variable, what do you think it contains?
 
 >1: a single number (i.e a vector of length 1)
@@ -255,15 +218,11 @@ editor: "visual"
 
 `Выбор: 3`
 
->| You got it right!
-
 >| Print the contents of my_sqrt.
 
 `my_sqrt`
 
 [1] 0.3162278 2.8284271 1.4628739
-
->| You nailed it! Good job!
 
 >| As you may have guessed, R first subtracted 1 from each element of z, then took the square
 | root of each element. This leaves you with a vector of the same length as the original
@@ -273,8 +232,6 @@ editor: "visual"
 
 `my_div <- z / my_sqrt`
 
->| You are doing so well!
-
 >| Which statement do you think is true?
 
 >1: my_div is undefined
@@ -283,15 +240,11 @@ editor: "visual"
 
 `Выбор: 2`
 
->| Nice work!
-
 >| Go ahead and print the contents of my_div.
 
 `my_div`
 
 [1] 3.478505 3.181981 2.146460
-
->| Nice work!
 
 >| When given two vectors of the same length, R simply performs the specified arithmetic
 | operation (`+`, `-`, `*`, etc.) element-by-element. If the vectors are of different lengths,
@@ -319,9 +272,6 @@ editor: "visual"
 > c(1, 2, 3, 4) + c(0, 10)
 [1]  1 12  3 14
 
->| You are doing so well!
-
-
 >| If the length of the shorter vector does not divide evenly into the length of the longer
 | vector, R will still apply the 'recycling' method, but will throw a warning to let you know
 | something fishy might be going on.
@@ -333,8 +283,6 @@ editor: "visual"
 [1]   1  12 103   4
 Предупреждение:
 В c(1, 2, 3, 4) + c(0, 10, 100) : длина большего объекта не является произведением длины меньшего объекта
-
->| Your dedication is inspiring!
 
 >| Before concluding this lesson, I'd like to show you a couple of time-saving tricks.
 
@@ -351,8 +299,6 @@ editor: "visual"
 `z*2+1000`
 
 [1] 1002.20 1018.00 1006.28
-
->| Excellent work!
 
 >| Finally, let's pretend you'd like to view the contents of a variable that you created
 | earlier, but you can't seem to remember if you named it my_div or myDiv. You could try both
@@ -372,4 +318,232 @@ editor: "visual"
 >| Perseverance, that's the answer.
 
 ![*5.2. Прохождение 1 подкурса*](./Images/1lesson.png)
+Выводы по подкурсу Basic Building Blocks: 
+1. Способ присвоения значения переменной в R заключается в использовании оператора присваивания, который представляет собой просто символ "меньше, чем", за которым следует знак "минус". Это выглядит следующим образом: <-
+2. Чтобы просмотреть содержимое переменной, необходимо ввести ее и нажать Enter
+3. Любой объект, содержащий данные называются структурой данных, а числовые векторы являются простейшим типом структуры данных в R. На самом деле, даже одно число считается вектором длиной в единицу.
+4. Самый простой способ создать вектор - это использовать функцию c()
+    `z <- c(1.1, 9, 3.14)`
+5.  В любое время, когда у вас возникнут вопросы по той или иной функции, вы можете получить доступ к встроенной справке с помощью команды "?"
+6.Можно объединить векторы, чтобы создать новый вектор.
+    `(z, 555, z)`
+    `[1]   1.10   9.00   3.14 555.00   1.10   9.00   3.14`
+7.Числовые векторы могут использоваться в арифметических выражениях.
+    `z * 2 + 100`
+    `[1] 102.20 118.00 106.28`
+    Сначала R умножил каждый из трех элементов в z на 2. Затем он добавил по 100 к каждому элементу.
+8. Чтобы извлечь квадратный корень, используйте функцию sqrt(), а чтобы получить абсолютное значение, используйте функцию abs().
+    `my_sqrt <- sqrt(z - 1)`
+    `my_sqrt`
+    `[1] 0.3162278 2.8284271 1.4628739`
+
+
+#### 5.2 Workspace and Files
+>| In this lesson, you'll learn how to examine your local workspace in R and begin to explore
+| the relationship between your workspace and the file system of your machine.
+| Because different operating systems have different conventions with regards to things like
+| file paths, the outputs of these commands may vary across machines.
+| However it's important to note that R provides a common API (a common set of commands) for
+| interacting with files, that way your code will work across different kinds of computers.
+| Let's jump right in so you can get a feel for how these special functions work!
+
+>| Determine which directory your R session is using as its current working directory using
+| getwd().
+
+`getwd()`
+
+[1] "C:/Users/user/Desktop/ИАТАУИБ/Lad_1"
+
+>| List all the objects in your local workspace using ls().
+
+`ls()`
+
+[1] "my_div"  "my_sqrt" "w"       "x"       "y"       "z"      
+
+>| Some R commands are the same as their equivalents commands on Linux or on a Mac. Both Linux
+| and Mac operating systems are based on an operating system called Unix. It's always a good
+| idea to learn more about Unix!
+
+
+>| Assign 9 to x using x <- 9.
+
+`x <- 9`
+
+>| Now take a look at objects that are in your workspace using ls().
+
+`ls()`
+
+[1] "my_div"  "my_sqrt" "w"       "x"       "y"       "z"      
+
+>| List all the files in your working directory using list.files() or dir().
+
+`dir()`
+
+[1] "Lad_1.Rproj"                "PR_1"                       "PR_1.markdown_strict_files"
+[4] "README.html"                "renv"                       "renv.lock"                 
+
+
+>| As we go through this lesson, you should be examining the help page for each new function.
+| Check out the help page for list.files with the command ?list.files.
+
+`?list.files`
+
+![*5.3. Прохождение 2 подкурса*](./Images/list.files.png)
+
+>| One of the most helpful parts of any R help file is the See Also section. Read that section
+| for list.files. Some of these functions may be used in later portions of this lesson.
+
+
+>| Using the args() function on a function name is also a handy way to see what arguments a
+| function can take.
+
+>| Use the args() function to determine the arguments to list.files().
+
+`args(list.files)`
+
+function (path = ".", pattern = NULL, all.files = FALSE, full.names = FALSE, 
+    recursive = FALSE, ignore.case = FALSE, include.dirs = FALSE, 
+    no.. = FALSE) 
+NULL
+
+>| Assign the value of the current working directory to a variable called "old.dir".
+
+`old.dir <- getwd()`
+
+>| We will use old.dir at the end of this lesson to move back to the place that we started. A
+| lot of query functions like getwd() have the useful property that they return the answer to
+| the question as a result of the function.
+
+
+>| Use dir.create() to create a directory in the current working directory called "testdir".
+
+`dir.create("testdir")`
+
+>| We will do all our work in this new directory and then delete it after we are done. This is
+| the R analog to "Take only pictures, leave only footprints."
+
+
+>| Set your working directory to "testdir" with the setwd() command.
+
+`setwd("testdir")`
+
+>| In general, you will want your working directory to be someplace sensible, perhaps created
+| for the specific project that you are working on. In fact, organizing your work in R
+| packages using RStudio is an excellent option. Check out RStudio at http://www.rstudio.com/
+
+`file.create("mytest.R")`
+
+[1] TRUE
+
+>| This should be the only file in this newly created directory. Let's check this by listing
+| all the files in the current directory.
+
+`list.files()`
+
+[1] "mytest.R"
+
+>| Check to see if "mytest.R" exists in the working directory using the file.exists() function.
+
+`file.exists("mytest.R")`
+
+[1] TRUE
+
+>| These sorts of functions are excessive for interactive use. But, if you are running a
+| program that loops through a series of files and does some processing on each one, you will
+| want to check to see that each exists before you try to process it.
+
+>| Access information about the file "mytest.R" by using file.info().
+
+`file.info("mytest.R")`
+
+         size isdir mode               mtime               ctime               atime exe
+mytest.R    0 FALSE  666 2024-09-20 18:17:20 2024-09-20 18:17:20 2024-09-20 18:17:20  no
+
+>| Change the name of the file "mytest.R" to "mytest2.R" by using file.rename().
+
+`file.rename("mytest.R", "mytest2.R")`
+
+[1] TRUE
+
+>| Your operating system will provide simpler tools for these sorts of tasks, but having the
+| ability to manipulate files programatically is useful. You might now try to delete mytest.R
+| using file.remove('mytest.R'), but that won't work since mytest.R no longer exists. You have
+| already renamed it.
+
+>| Make a copy of "mytest2.R" called "mytest3.R" using file.copy().
+
+`file.copy("mytest2.R","mytest3.R")`
+
+[1] TRUE
+
+>| You now have two files in the current directory. That may not seem very interesting. But
+| what if you were working with dozens, or millions, of individual files? In that case, being
+| able to programatically act on many files would be absolutely necessary. Don't forget that
+| you can, temporarily, leave the lesson by typing play() and then return by typing nxt().
+
+>| Provide the relative path to the file "mytest3.R" by using file.path().
+
+`file.path("mytest3.R")`
+
+[1] "mytest3.R"
+
+>| You can use file.path to construct file and directory paths that are independent of the
+| operating system your R code is running on. Pass 'folder1' and 'folder2' as arguments to
+| file.path to make a platform-independent pathname.
+
+`file.path("folder1", "folder2")`
+
+[1] "folder1/folder2"
+
+>| Take a look at the documentation for dir.create by entering ?dir.create . Notice the
+| 'recursive' argument. In order to create nested directories, 'recursive' must be set to
+| TRUE.
+
+`dir.create(file.path("testdir2", "testdir3"), recursive = TRUE)`
+
+| Not quite right, but keep trying. Or, type info() for more options.
+
+| ?dir.create will show you the docs.
+
+`?dir.create`
+
+>| Create a directory in the current working directory called "testdir2" and a subdirectory for
+| it called "testdir3", all in one command by using dir.create() and file.path().
+
+`dir.create(file.path('testdir2', 'testdir3'), recursive = TRUE)`
+
+Предупреждение:
+В dir.create(file.path("testdir2", "testdir3"), recursive = TRUE) :
+  'testdir2\testdir3' уже существует
+
+>| Go back to your original working directory using setwd(). (Recall that we created the
+| variable old.dir with the full path for the orginal working directory at the start of these
+| questions.)
+
+`setwd(old.dir)`
+
+>| It is often helpful to save the settings that you had before you began an analysis and then
+| go back to them at the end. This trick is often used within functions; you save, say, the
+| par() settings that you started with, mess around a bunch, and then set them back to the
+| original values at the end. This isn't the same as what we have done here, but it seems
+| similar enough to mention.
+
+![*5.4. Прохождение 2 подкурса*](./Images/2lesson.png)
+Выводы по подкурсу Workspace and Files:
+1. R предоставляет общий API (общий набор команд) для взаимодействия с файлами.
+2. `getwd()` - какой каталог используется в сеансев качестве текущего рабочего каталога.
+3. `ls()` - список всех объектов в локальном рабочем пространстве.
+4. `list.files()` или `dir()` - все файлы в рабочем каталоге.
+5. `args()` - определить аргументы для `list.files() `
+6. `dir.create()` - для создания каталога в текущем рабочем каталоге.
+7. `file.exists()` - существует ли файл в рабочем каталоге.
+8. `file.info()` - доступ к информации о файле.
+9. `file.rename()` - поменять название файла.
+10.`file.remove()` - удалить файл.
+11. `file.copy()` - создать копию.
+12. `file.path()` - относительный путь к файлу.
+13. `file.path()` - построения путей к файлам и каталогам, которые не зависят от операционной системы.
+14.`setwd()` - перейти в нужную директорию.
+
+#### 5.3 Sequences of Numbers
 
