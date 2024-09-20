@@ -2,44 +2,45 @@
 Arikova Kristina
 2024-09-07
 
+# Практика 001
+
+По дисциплине “Информационно-аналитические технологии поиска угроз
+инорфмационной безопасности”
+
+Введение в R
+
 ## Цель работы
 
-1.Развить практические навыки использования современного стека
-воспроизводимых исследований 2. Закрепить знания о современных сетевых
-протоколах прикладного уровня
+1.  Развить практические навыки использования языка программирования R
+    для обработки данных
+2.  Развить навыки работы в Rstudio IDE: 2.1 установка пакетов 2.2
+    работа с проектами в Rstudio 3.3 настройка и работа с Git
+3.  Закрепить знания базовых типов данных языка R и простейших операций
+    с ними
 
 ## Исходные данные
 
-1.  ОС Windows
-2.  Польцы студента
+1.  Компьютер
+2.  ОС Windows
+3.  Rstudio
+4.  Библиотека swirl
+5.  Github
 
-## R Markdown
+## Общий план выполнения работы
 
-This is an R Markdown document. Markdown is a simple formatting syntax
-for authoring HTML, PDF, and MS Word documents. For more details on
-using R Markdown see <http://rmarkdown.rstudio.com>.
+1.  Установить интерпретатор R
+2.  Установить Rstudio IDE
+3.  Установить программный пакет swirl:
+4.  Запустить задание с помощью swirl::swirl()
+5.  Выбрать из меню курсов 1. R Programming: The basics of programming
+    in R
+6.  Запустить подкурсы и выполнить: 6.1 базовые структурные блоки (Basic
+    Building Blocks) 6.2 рабочие пространства и файлы (Workspace and
+    Files) 6.3 последовательности чисел (Sequences of Numbers) 6.4
+    векторы (Vectors) 6.5 пропущенные значения (Missing Values)
+7.  Составить отчет и выложить его и исходный qmd/rmd файл в свой
+    репозиторий Github
 
-When you click the **Knit** button a document will be generated that
-includes both content as well as the output of any embedded R code
-chunks within the document. You can embed an R code chunk like this:
+## Содержание ЛР
 
-``` r
-summary(cars)
-```
-
-         speed           dist       
-     Min.   : 4.0   Min.   :  2.00  
-     1st Qu.:12.0   1st Qu.: 26.00  
-     Median :15.0   Median : 36.00  
-     Mean   :15.4   Mean   : 42.98  
-     3rd Qu.:19.0   3rd Qu.: 56.00  
-     Max.   :25.0   Max.   :120.00  
-
-## Including Plots
-
-You can also embed plots, for example:
-
-![](PR_1.markdown_strict_files/figure-markdown_strict/pressure-1.png)
-
-Note that the `echo = FALSE` parameter was added to the code chunk to
-prevent printing of the R code that generated the plot.
+Шаг 1. Установить интерпретатор R
