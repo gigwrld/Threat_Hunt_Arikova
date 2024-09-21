@@ -78,19 +78,21 @@ starwars %>% mutate(Stretching = mass/height)  %>% arrange(desc(Stretching)) %>%
 ### 10. Найти средний возраст персонажей каждой расы вселенной Звездных войн.
 
 ```{r}
+starwars %>% group_by(species) %>% filter(!is.na(birth_year)) %>% summarise(Sr = mean(birth_year)) %>% select(species, Sr) 
 
 ```
 
 ### 10. Найти самый распространенный цвет глаз персонажей вселенной Звездных войн.
 
 ```{r}
+starwars %>% filter(!is.na(eye_color)) %>% group_by(eye_color) %>% summarise(k = n()) %>% arrange(desc(k)) %>% head(1) %>% select(eye_color) 
 
 ```
 
 ### 11. Подсчитать среднюю длину имени в каждой расе вселенной Звездных войн.
 
 ```{r}
-
+starwars %>% mutate(l=nchar(name)) %>% group_by(species) %>% summarise(mean = mean(l)) %>% select(species,mean)
 ```
 
 ## Вывод 

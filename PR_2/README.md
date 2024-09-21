@@ -20,7 +20,8 @@ Arikova Kristina
 
 ## Выполнение работы
 
-### 1. Сколько строк в датафрейме?
+Проанализировать встроенный в пакет dplyr набор данных starwars с
+помощью языка R.
 
 ``` r
 library(dplyr)
@@ -181,9 +182,60 @@ starwars %>% mutate(Stretching = mass/height)  %>% arrange(desc(Stretching)) %>%
 
 ### 10. Найти средний возраст персонажей каждой расы вселенной Звездных войн.
 
+``` r
+starwars %>% group_by(species) %>% filter(!is.na(birth_year)) %>% summarise(Sr = mean(birth_year)) %>% select(species, Sr) 
+```
+
+    # A tibble: 15 × 2
+       species           Sr
+       <chr>          <dbl>
+     1 Cerean          92  
+     2 Droid           53.3
+     3 Ewok             8  
+     4 Gungan          52  
+     5 Human           53.7
+     6 Hutt           600  
+     7 Kel Dor         22  
+     8 Mirialan        49  
+     9 Mon Calamari    41  
+    10 Rodian          44  
+    11 Trandoshan      53  
+    12 Twi'lek         48  
+    13 Wookiee        200  
+    14 Yoda's species 896  
+    15 Zabrak          54  
+
 ### 10. Найти самый распространенный цвет глаз персонажей вселенной Звездных войн.
 
+``` r
+starwars %>% filter(!is.na(eye_color)) %>% group_by(eye_color) %>% summarise(k = n()) %>% arrange(desc(k)) %>% head(1) %>% select(eye_color) 
+```
+
+    # A tibble: 1 × 1
+      eye_color
+      <chr>    
+    1 brown    
+
 ### 11. Подсчитать среднюю длину имени в каждой расе вселенной Звездных войн.
+
+``` r
+starwars %>% mutate(l=nchar(name)) %>% group_by(species) %>% summarise(mean = mean(l)) %>% select(species,mean)
+```
+
+    # A tibble: 38 × 2
+       species    mean
+       <chr>     <dbl>
+     1 Aleena    12   
+     2 Besalisk  15   
+     3 Cerean    12   
+     4 Chagrian  10   
+     5 Clawdite  10   
+     6 Droid      4.83
+     7 Dug        7   
+     8 Ewok      21   
+     9 Geonosian 17   
+    10 Gungan    11.7 
+    # ℹ 28 more rows
 
 ## Вывод
 
