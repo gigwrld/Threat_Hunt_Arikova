@@ -18,6 +18,8 @@ Arikova Kristina
     пакета dplyr – функции `select()`, `filter()`,`mutate()`,
     `arrange()`, `group_by()`
 
+## Выполнение работы
+
 ### 1. Сколько строк в датафрейме?
 
 ``` r
@@ -98,30 +100,95 @@ starwars %>% glimpse()
 ### 4. Сколько уникальных рас персонажей (species) представлено в данных?
 
 ``` r
-unique(starwars[c("species")]) 
+length(unique(starwars$species))
 ```
 
-    # A tibble: 38 × 1
-       species       
-       <chr>         
-     1 Human         
-     2 Droid         
-     3 Wookiee       
-     4 Rodian        
-     5 Hutt          
-     6 <NA>          
-     7 Yoda's species
-     8 Trandoshan    
-     9 Mon Calamari  
-    10 Ewok          
-    # ℹ 28 more rows
+    [1] 38
 
 ### 5. Найти самого высокого персонажа.
 
 ``` r
-max(starwars[c("height")])
+starwars %>% arrange(desc(height)) %>% head(1) %>% select(name)
 ```
 
-    [1] NA
+    # A tibble: 1 × 1
+      name       
+      <chr>      
+    1 Yarael Poof
 
 ### 6. Найти всех персонажей ниже 170.
+
+``` r
+starwars %>% filter(height < 170)%>%
+select(name)
+```
+
+    # A tibble: 22 × 1
+       name                 
+       <chr>                
+     1 C-3PO                
+     2 R2-D2                
+     3 Leia Organa          
+     4 Beru Whitesun Lars   
+     5 R5-D4                
+     6 Yoda                 
+     7 Mon Mothma           
+     8 Wicket Systri Warrick
+     9 Nien Nunb            
+    10 Watto                
+    # ℹ 12 more rows
+
+### 7. Подсчитать ИМТ (индекс массы тела) для всех персонажей.
+
+``` r
+starwars %>% mutate("BMI" = mass/(height*height)) %>% select(name,BMI)
+```
+
+    # A tibble: 87 × 2
+       name                   BMI
+       <chr>                <dbl>
+     1 Luke Skywalker     0.00260
+     2 C-3PO              0.00269
+     3 R2-D2              0.00347
+     4 Darth Vader        0.00333
+     5 Leia Organa        0.00218
+     6 Owen Lars          0.00379
+     7 Beru Whitesun Lars 0.00275
+     8 R5-D4              0.00340
+     9 Biggs Darklighter  0.00251
+    10 Obi-Wan Kenobi     0.00232
+    # ℹ 77 more rows
+
+### 8.Найти 10 самых “вытянутых” персонажей.
+
+``` r
+starwars %>% mutate(Stretching = mass/height)  %>% arrange(desc(Stretching)) %>% head(10) %>% select(name,Stretching) 
+```
+
+    # A tibble: 10 × 2
+       name                  Stretching
+       <chr>                      <dbl>
+     1 Jabba Desilijic Tiure      7.76 
+     2 Grievous                   0.736
+     3 IG-88                      0.7  
+     4 Owen Lars                  0.674
+     5 Darth Vader                0.673
+     6 Jek Tono Porkins           0.611
+     7 Bossk                      0.595
+     8 Tarfful                    0.581
+     9 Dexter Jettster            0.515
+    10 Chewbacca                  0.491
+
+### 10. Найти средний возраст персонажей каждой расы вселенной Звездных войн.
+
+### 10. Найти самый распространенный цвет глаз персонажей вселенной Звездных войн.
+
+### 11. Подсчитать среднюю длину имени в каждой расе вселенной Звездных войн.
+
+## Вывод
+
+1.  Получены практические навыки использования языка программирования R
+    для обработки данных
+2.  Закреплены знания базовых типов данных языка R
+3.  Получены практические навыки использования функций обработки данных
+    пакета dplyr
