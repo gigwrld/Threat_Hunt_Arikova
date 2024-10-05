@@ -111,7 +111,6 @@ editor: "visual"
   
 ![*4.1. Запуск задания*](./Images/swirl.png)
 
-
 После запуска задания выбран курс 1. R Programming: The basics of programming in R
 
 ![*4.2. Запуск курса*](./Images/RProgramming.png)
