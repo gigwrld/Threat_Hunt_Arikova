@@ -157,9 +157,11 @@ programming in R
 > R can be used as an interactive calculator. Type 5 + 7 and press |
 > Enter.
 
-`5+7`
+``` r
+5+7
+```
 
-\[1\] 12
+    [1] 12
 
 > R simply prints the result of 12 by default. However, R is a
 > programming language and often  
@@ -186,7 +188,9 @@ programming in R
 > \<- 5 + 7. This can be  
 > read as ‘x gets 5 plus 7’. Give it a try now.
 
-`x <- 5 + 7`
+``` r
+x <- 5 + 7
+```
 
 > You’ll notice that R did not print the result of 12 this time. When
 > you use the assignment  
@@ -197,19 +201,25 @@ programming in R
 > To view the contents of the variable x, just type x and press Enter.
 > Try it now.
 
-`x`
+``` r
+x
+```
 
-\[1\] 12
+    [1] 12
 
 > Now, store the result of x - 3 in a new variable called y.
 
-`y <- x-3`
+``` r
+y <- x-3
+```
 
 > What is the value of y? Type y to find out.
 
-`y`
+``` r
+y
+```
 
-\[1\] 9
+    [1] 9
 
 > Now, let’s create a small collection of numbers called a vector. Any
 > object that contains  
@@ -224,7 +234,9 @@ programming in R
 > 3.14, type c(1.1, 9,  
 > 3.14). Try it now and store the result in a variable called z.
 
-`z <- c(1.1, 9, 3.14)`
+``` r
+z <- c(1.1, 9, 3.14)
+```
 
 > Anytime you have questions about a particular function, you can access
 > R’s built-in help  
@@ -233,7 +245,11 @@ programming in R
 > type ?c without the parentheses that normally follow a function name.
 > Give it a try.
 
-`?c`
+``` r
+?c
+```
+
+    запускаю httpd сервер помощи... готово
 
 <figure>
 <img src="./Images/question.png" alt="5.1. Запуск курса" />
@@ -244,9 +260,11 @@ programming in R
 > separating the values in the  
 > output.
 
-`z`
+``` r
+z
+```
 
-\[1\] 1.10 9.00 3.14
+    [1] 1.10 9.00 3.14
 
 > You can combine vectors to make a new vector. Create a new vector that
 > contains z, 555, then  
@@ -254,17 +272,21 @@ programming in R
 > that we can just see  
 > the result immediately.
 
-`c(z, 555, z)`
+``` r
+c(z, 555, z)
+```
 
-\[1\] 1.10 9.00 3.14 555.00 1.10 9.00 3.14
+    [1]   1.10   9.00   3.14 555.00   1.10   9.00   3.14
 
 > Numeric vectors can be used in arithmetic expressions. Type the
 > following to see what  
 > happens: z \* 2 + 100.
 
-`z * 2 + 100`
+``` r
+z * 2 + 100
+```
 
-\[1\] 102.20 118.00 106.28
+    [1] 102.20 118.00 106.28
 
 > First, R multiplied each of the three elements in z by 2. Then it
 > added 100 to each element  
@@ -279,7 +301,9 @@ programming in R
 > Take the square root of z - 1 and assign it to a new variable called
 > my_sqrt.
 
-`my_sqrt <- sqrt(z - 1)`
+``` r
+my_sqrt <- sqrt(z - 1)
+```
 
 > Before we view the contents of the my_sqrt variable, what do you think
 > it contains?
@@ -291,9 +315,11 @@ programming in R
 
 > Print the contents of my_sqrt.
 
-`my_sqrt`
+``` r
+my_sqrt
+```
 
-\[1\] 0.3162278 2.8284271 1.4628739
+    [1] 0.3162278 2.8284271 1.4628739
 
 > As you may have guessed, R first subtracted 1 from each element of z,
 > then took the square  
@@ -304,7 +330,9 @@ programming in R
 > Now, create a new variable called my_div that gets the value of z
 > divided by my_sqrt.
 
-`my_div <- z / my_sqrt`
+``` r
+my_div <- z / my_sqrt
+```
 
 > Which statement do you think is true?
 
@@ -316,9 +344,11 @@ programming in R
 
 > Go ahead and print the contents of my_div.
 
-`my_div`
+``` r
+my_div
+```
 
-\[1\] 3.478505 3.181981 2.146460
+    [1] 3.478505 3.181981 2.146460
 
 > When given two vectors of the same length, R simply performs the
 > specified arithmetic  
@@ -341,7 +371,9 @@ programming in R
 > adding c(1, 2, 3, 4) and  
 > c(0, 10). Don’t worry about saving the result in a new variable.
 
-`w = c(1, 2, 3, 4) + c(0, 10)`
+``` r
+w = c(1, 2, 3, 4) + c(0, 10)
+```
 
 > That’s not the answer I was looking for, but try again. Or, type
 > info() for more options.
@@ -350,7 +382,11 @@ programming in R
 > vectors of different  
 > length. Don’t assign the result to a variable.
 
-> c(1, 2, 3, 4) + c(0, 10) \[1\] 1 12 3 14
+``` r
+c(1, 2, 3, 4) + c(0, 10)
+```
+
+    [1]  1 12  3 14
 
 > If the length of the shorter vector does not divide evenly into the
 > length of the longer  
@@ -360,10 +396,14 @@ programming in R
 
 > Try c(1, 2, 3, 4) + c(0, 10, 100) for an example.
 
-`c(1, 2, 3, 4) + c(0, 10, 100)`
+``` r
+c(1, 2, 3, 4) + c(0, 10, 100)
+```
 
-\[1\] 1 12 103 4 Предупреждение: В c(1, 2, 3, 4) + c(0, 10, 100) : длина
-большего объекта не является произведением длины меньшего объекта
+    Warning in c(1, 2, 3, 4) + c(0, 10, 100): длина большего объекта не является
+    произведением длины меньшего объекта
+
+    [1]   1  12 103   4
 
 > Before concluding this lesson, I’d like to show you a couple of
 > time-saving tricks.
@@ -381,9 +421,11 @@ programming in R
 > you, just type the  
 > corrected command.
 
-`z*2+1000`
+``` r
+z*2+1000
+```
 
-\[1\] 1002.20 1018.00 1006.28
+    [1] 1002.20 1018.00 1006.28
 
 > Finally, let’s pretend you’d like to view the contents of a variable
 > that you created  
@@ -401,14 +443,21 @@ programming in R
 > auto-completion doesn’t work for  
 > you, just type my_div and press Enter.)
 
-`my_div`
+``` r
+my_div
+```
 
-\[1\] 3.478505 3.181981 2.146460
+    [1] 3.478505 3.181981 2.146460
 
 > Perseverance, that’s the answer.
 
-![*5.2. Прохождение 1 подкурса*](./Images/1lesson.png) \#### Выводы по
-подкурсу Basic Building Blocks:
+<figure>
+<img src="./Images/1lesson.png" alt="5.2. Прохождение 1 подкурса" />
+<figcaption aria-hidden="true"><em>5.2. Прохождение 1
+подкурса</em></figcaption>
+</figure>
+
+#### Выводы по подкурсу Basic Building Blocks:
 
 1.  Способ присвоения значения переменной в R заключается в
     использовании оператора присваивания, который представляет собой
@@ -428,17 +477,14 @@ programming in R
     функции, вы можете получить доступ к встроенной справке с помощью
     команды `?`
 
-6.Можно объединить векторы, чтобы создать новый вектор. `(z, 555, z)`
-`[1]   1.10   9.00   3.14 555.00   1.10   9.00   3.14`
+6.Можно объединить векторы, чтобы создать новый вектор.
 
 7.Числовые векторы могут использоваться в арифметических выражениях.
-`z * 2 + 100` `[1] 102.20 118.00 106.28` Сначала R умножил каждый из
-трех элементов в z на 2. Затем он добавил по 100 к каждому элементу.
+Сначала R умножил каждый из трех элементов в z на 2. Затем он добавил по
+100 к каждому элементу.
 
 1.  Чтобы извлечь квадратный корень, используйте функцию sqrt(), а чтобы
     получить абсолютное значение, используйте функцию abs().
-    `my_sqrt <- sqrt(z - 1)` `my_sqrt`
-    `[1] 0.3162278 2.8284271 1.4628739`
 
 #### 5.2 Workspace and Files
 
@@ -460,15 +506,19 @@ programming in R
 > working directory using  
 > getwd().
 
-`getwd()`
+``` r
+getwd()
+```
 
-\[1\] “C:/Users/user/Desktop/ИАТАУИБ/Lad_1”
+    [1] "C:/Users/user/Desktop/ИАТАУИБ/Lad_1/PR_1"
 
 > List all the objects in your local workspace using ls().
 
-`ls()`
+``` r
+ls()
+```
 
-\[1\] “my_div” “my_sqrt” “w” “x” “y” “z”
+    [1] "my_div"  "my_sqrt" "w"       "x"       "y"       "z"      
 
 > Some R commands are the same as their equivalents commands on Linux or
 > on a Mac. Both Linux  
@@ -478,27 +528,35 @@ programming in R
 
 > Assign 9 to x using x \<- 9.
 
-`x <- 9`
+``` r
+x <- 9
+```
 
 > Now take a look at objects that are in your workspace using ls().
 
-`ls()`
+``` r
+ls()
+```
 
-\[1\] “my_div” “my_sqrt” “w” “x” “y” “z”
+    [1] "my_div"  "my_sqrt" "w"       "x"       "y"       "z"      
 
 > List all the files in your working directory using list.files() or
 > dir().
 
-`dir()`
+``` r
+dir()
+```
 
-\[1\] “Lad_1.Rproj” “PR_1” “PR_1.markdown_strict_files” \[4\]
-“README.html” “renv” “renv.lock”
+    [1] "Images"         "mytest2.R"      "mytest3.R"      "PR_1.rmarkdown"
+    [5] "PR_1.Rmd"       "README.md"      "testdir"        "testdir2"      
 
 > As we go through this lesson, you should be examining the help page
 > for each new function.  
 > Check out the help page for list.files with the command ?list.files.
 
-`?list.files`
+``` r
+?list.files
+```
 
 <figure>
 <img src="./Images/list.files.png" alt="5.3. Прохождение 2 подкурса" />
@@ -517,7 +575,14 @@ programming in R
 
 > Use the args() function to determine the arguments to list.files().
 
-`args(list.files)`
+``` r
+args(list.files)
+```
+
+    function (path = ".", pattern = NULL, all.files = FALSE, full.names = FALSE, 
+        recursive = FALSE, ignore.case = FALSE, include.dirs = FALSE, 
+        no.. = FALSE) 
+    NULL
 
 function (path = “.”, pattern = NULL, all.files = FALSE, full.names =
 FALSE, recursive = FALSE, ignore.case = FALSE, include.dirs = FALSE,
@@ -526,7 +591,9 @@ no.. = FALSE) NULL
 > Assign the value of the current working directory to a variable called
 > “old.dir”.
 
-`old.dir <- getwd()`
+``` r
+old.dir <- getwd()
+```
 
 > We will use old.dir at the end of this lesson to move back to the
 > place that we started. A  
@@ -537,7 +604,11 @@ no.. = FALSE) NULL
 > Use dir.create() to create a directory in the current working
 > directory called “testdir”.
 
-`dir.create("testdir")`
+``` r
+dir.create("testdir")
+```
+
+    Warning in dir.create("testdir"): 'testdir' уже существует
 
 > We will do all our work in this new directory and then delete it after
 > we are done. This is  
@@ -545,7 +616,9 @@ no.. = FALSE) NULL
 
 > Set your working directory to “testdir” with the setwd() command.
 
-`setwd("testdir")`
+``` r
+setwd("testdir")
+```
 
 > In general, you will want your working directory to be someplace
 > sensible, perhaps created  
@@ -554,24 +627,32 @@ no.. = FALSE) NULL
 > packages using RStudio is an excellent option. Check out RStudio at
 > http://www.rstudio.com/
 
-`file.create("mytest.R")`
+``` r
+file.create("mytest.R")
+```
 
-\[1\] TRUE
+    [1] TRUE
 
 > This should be the only file in this newly created directory. Let’s
 > check this by listing  
 > all the files in the current directory.
 
-`list.files()`
+``` r
+list.files()
+```
 
-\[1\] “mytest.R”
+    [1] "Images"         "mytest.R"       "mytest2.R"      "mytest3.R"     
+    [5] "PR_1.rmarkdown" "PR_1.Rmd"       "README.md"      "testdir"       
+    [9] "testdir2"      
 
 > Check to see if “mytest.R” exists in the working directory using the
 > file.exists() function.
 
-`file.exists("mytest.R")`
+``` r
+file.exists("mytest.R")
+```
 
-\[1\] TRUE
+    [1] TRUE
 
 > These sorts of functions are excessive for interactive use. But, if
 > you are running a  
@@ -581,19 +662,23 @@ no.. = FALSE) NULL
 
 > Access information about the file “mytest.R” by using file.info().
 
-`file.info("mytest.R")`
+``` r
+file.info("mytest.R")
+```
 
-         size isdir mode               mtime               ctime               atime exe
-
-mytest.R 0 FALSE 666 2024-09-20 18:17:20 2024-09-20 18:17:20 2024-09-20
-18:17:20 no
+             size isdir mode               mtime               ctime
+    mytest.R    0 FALSE  666 2024-10-05 10:46:38 2024-10-05 10:46:38
+                           atime exe
+    mytest.R 2024-10-05 10:46:38  no
 
 > Change the name of the file “mytest.R” to “mytest2.R” by using
 > file.rename().
 
-`file.rename("mytest.R", "mytest2.R")`
+``` r
+file.rename("mytest.R", "mytest2.R")
+```
 
-\[1\] TRUE
+    [1] TRUE
 
 > Your operating system will provide simpler tools for these sorts of
 > tasks, but having the  
@@ -605,9 +690,11 @@ mytest.R 0 FALSE 666 2024-09-20 18:17:20 2024-09-20 18:17:20 2024-09-20
 
 > Make a copy of “mytest2.R” called “mytest3.R” using file.copy().
 
-`file.copy("mytest2.R","mytest3.R")`
+``` r
+file.copy("mytest2.R","mytest3.R")
+```
 
-\[1\] TRUE
+    [1] FALSE
 
 > You now have two files in the current directory. That may not seem
 > very interesting. But  
@@ -621,9 +708,11 @@ mytest.R 0 FALSE 666 2024-09-20 18:17:20 2024-09-20 18:17:20 2024-09-20
 > Provide the relative path to the file “mytest3.R” by using
 > file.path().
 
-`file.path("mytest3.R")`
+``` r
+file.path("mytest3.R")
+```
 
-\[1\] “mytest3.R”
+    [1] "mytest3.R"
 
 > You can use file.path to construct file and directory paths that are
 > independent of the  
@@ -631,9 +720,11 @@ mytest.R 0 FALSE 666 2024-09-20 18:17:20 2024-09-20 18:17:20 2024-09-20
 > ‘folder2’ as arguments to  
 > file.path to make a platform-independent pathname.
 
-`file.path("folder1", "folder2")`
+``` r
+file.path("folder1", "folder2")
+```
 
-\[1\] “folder1/folder2”
+    [1] "folder1/folder2"
 
 > Take a look at the documentation for dir.create by entering
 > ?dir.create . Notice the  
@@ -641,23 +732,28 @@ mytest.R 0 FALSE 666 2024-09-20 18:17:20 2024-09-20 18:17:20 2024-09-20
 > ‘recursive’ must be set to  
 > TRUE.
 
-`dir.create(file.path("testdir2", "testdir3"), recursive = TRUE)`
+``` r
+dir.create(file.path("testdir2", "testdir3"), recursive = TRUE)
+```
 
-Not quite right, but keep trying. Or, type info() for more options.
+    Warning in dir.create(file.path("testdir2", "testdir3"), recursive = TRUE):
+    'testdir2\testdir3' уже существует
 
-?dir.create will show you the docs.
-
-`?dir.create`
+``` r
+?dir.create
+```
 
 > Create a directory in the current working directory called “testdir2”
 > and a subdirectory for  
 > it called “testdir3”, all in one command by using dir.create() and
 > file.path().
 
-`dir.create(file.path('testdir2', 'testdir3'), recursive = TRUE)`
+``` r
+dir.create(file.path('testdir2', 'testdir3'), recursive = TRUE)
+```
 
-Предупреждение: В dir.create(file.path(“testdir2”, “testdir3”),
-recursive = TRUE) : ‘testdir2’ уже существует
+    Warning in dir.create(file.path("testdir2", "testdir3"), recursive = TRUE):
+    'testdir2\testdir3' уже существует
 
 > Go back to your original working directory using setwd(). (Recall that
 > we created the  
@@ -665,7 +761,9 @@ recursive = TRUE) : ‘testdir2’ уже существует
 > at the start of these  
 > questions.)
 
-`setwd(old.dir)`
+``` r
+setwd(old.dir)
+```
 
 > It is often helpful to save the settings that you had before you began
 > an analysis and then  
@@ -717,17 +815,21 @@ recursive = TRUE) : ‘testdir2’ уже существует
 > `:` operator. Type  
 > 1:20 to see how it works.
 
-`1:20`
+``` r
+1:20
+```
 
-\[1\] 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+     [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
 
 > That gave us every integer between (and including) 1 and 20. We could
 > also use it to create  
 > a sequence of real numbers. For example, try pi:10.
 
-`pi:10`
+``` r
+pi:10
+```
 
-\[1\] 3.141593 4.141593 5.141593 6.141593 7.141593 8.141593 9.141593
+    [1] 3.141593 4.141593 5.141593 6.141593 7.141593 8.141593 9.141593
 
 > The result is a vector of real numbers starting with pi (3.142…) and
 > increasing in  
@@ -735,79 +837,105 @@ recursive = TRUE) : ‘testdir2’ уже существует
 > next number in our  
 > sequence would be greater than 10.
 
-`15:1`
+``` r
+15:1
+```
 
-\[1\] 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1
+     [1] 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1
 
-`?`:\`\`
+``` r
+?`:`
+```
 
 > The most basic use of seq() does exactly the same thing as the `:`
 > operator. Try seq(1, 20)  
 > to see this.
 
-`seq(1, 20)`
+``` r
+seq(1, 20)
+```
 
-\[1\] 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+     [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
 
-`seq(0, 10, by=0.5)`
+``` r
+seq(0, 10, by=0.5)
+```
 
-\[1\] 0.0 0.5 1.0 1.5 2.0 2.5 3.0 3.5 4.0 4.5 5.0 5.5 6.0 6.5 7.0 7.5
-8.0 8.5 \[19\] 9.0 9.5 10.0
+     [1]  0.0  0.5  1.0  1.5  2.0  2.5  3.0  3.5  4.0  4.5  5.0  5.5  6.0  6.5  7.0
+    [16]  7.5  8.0  8.5  9.0  9.5 10.0
 
 > Or maybe we don’t care what the increment is and we just want a
 > sequence of 30 numbers | between 5 and 10. seq(5, 10, length=30) does
 > the trick. Give it a shot now and store the | result in a new variable
 > called my_seq.
 
-`my_seq <- seq(5, 10, length=30)`
+``` r
+my_seq <- seq(5, 10, length=30)
+```
 
 > To confirm that my_seq has length 30, we can use the length()
 > function. Try it now.
 
-`length(my_seq)`
+``` r
+length(my_seq)
+```
 
-\[1\] 30
+    [1] 30
 
-`1:length(my_seq)`
+``` r
+1:length(my_seq)
+```
 
-\[1\] 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
-26 27 28 29 30
+     [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+    [26] 26 27 28 29 30
 
-`seq(along.with = my_seq)`
+``` r
+seq(along.with = my_seq)
+```
 
-\[1\] 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
-26 27 28 29 30 \> However, as is the case with many common tasks, R has
-a separate built-in function for this | purpose called seq_along(). Type
-seq_along(my_seq) to see it in action.
+     [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+    [26] 26 27 28 29 30
 
-`seq_along(my_seq)`
+> However, as is the case with many common tasks, R has a separate
+> built-in function for this | purpose called seq_along(). Type
+> seq_along(my_seq) to see it in action.
 
-\[1\] 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
-26 27 28 29 30
+``` r
+seq_along(my_seq)
+```
+
+     [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+    [26] 26 27 28 29 30
 
 > If we’re interested in creating a vector that contains 40 zeros, we
 > can use rep(0, times = 40). Try it out.
 
-`rep(0, times = 40)`
+``` r
+rep(0, times = 40)
+```
 
-\[1\] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0
+     [1] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    [39] 0 0
 
 > If instead we want our vector to contain 10 repetitions of the vector
 > (0, 1, 2), we can do | rep(c(0, 1, 2), times = 10). Go ahead.
 
-`rep(c(0, 1, 2), times = 10)`
+``` r
+rep(c(0, 1, 2), times = 10)
+```
 
-\[1\] 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2
+     [1] 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2
 
 > Finally, let’s say that rather than repeating the vector (0, 1, 2)
 > over and over again, we | want our vector to contain 10 zeros, then 10
 > ones, then 10 twos. We can do this with the | `each` argument. Try
 > rep(c(0, 1, 2), each = 10).
 
-`rep(c(0, 1, 2), each = 10)`
+``` r
+rep(c(0, 1, 2), each = 10)
+```
 
-\[1\] 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2
+     [1] 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2
 
 <figure>
 <img src="./Images/3lesson.png" alt="5.5. Прохождение 3 подкурса" />
@@ -855,14 +983,19 @@ seq_along(my_seq) to see it in action.
 > First, create a numeric vector num_vect that contains the values 0.5,
 > 55, -10, and 6.
 
-`num_vect <- c(0.5, 55, -10, 6)`
+``` r
+num_vect <- c(0.5, 55, -10, 6)
+```
 
 > Now, create a variable called tf that gets the result of num_vect \<
 > 1, which is read as | ‘num_vect is less than 1’.
 
-`tf <- num_vect < 1` `tf`
+``` r
+tf <- num_vect < 1
+tf
+```
 
-\[1\] TRUE FALSE TRUE FALSE
+    [1]  TRUE FALSE  TRUE FALSE
 
 > The statement num_vect \< 1 is a condition and tf tells us whether
 > each corresponding element | of our numeric vector num_vect satisfies
@@ -875,9 +1008,11 @@ seq_along(my_seq) to see it in action.
 > Let’s try another. Type num_vect \>= 6 without assigning the result to
 > a new variable.
 
-`num_vect >= 6`
+``` r
+num_vect >= 6
+```
 
-\[1\] FALSE TRUE FALSE TRUE
+    [1] FALSE  TRUE FALSE  TRUE
 
 > This time, we are asking whether each individual element of num_vect
 > is greater than OR | equal to 6. Since only 55 and 6 are greater than
@@ -916,60 +1051,76 @@ seq_along(my_seq) to see it in action.
 > quotes, so that R knows they are character | strings. Store the vector
 > in a variable called my_char.
 
-`my_char <- c("My", "name", "is")` `my_char`
+``` r
+my_char <- c("My", "name", "is")
+my_char
+```
 
-\[1\] “My” “name” “is”
+    [1] "My"   "name" "is"  
 
 > Type paste(my_char, collapse = ” “) now. Make sure there’s a space
 > between the double quotes  
 > in the `collapse` argument. You’ll see why in a second.
 
-`paste(my_char, collapse = " ")`
+``` r
+paste(my_char, collapse = " ")
+```
 
-\[1\] “My name is”
+    [1] "My name is"
 
 > The `collapse` argument to the paste() function tells R that when we
 > join together the | elements of the my_char character vector, we’d
 > like to separate them with single spaces.
 
-`my_name <- c(my_char, "Kristina")` `my_name`
+``` r
+my_name <- c(my_char, "Kristina")
+my_name
+```
 
-\[1\] “My” “name” “is” “Kristina”
+    [1] "My"       "name"     "is"       "Kristina"
 
 > Now, use the paste() function once more to join the words in my_name
 > together into a single | character string. Don’t forget to say
 > collapse = ” “!
 
-`paste(my_name, collapse = " ")`
+``` r
+paste(my_name, collapse = " ")
+```
 
-\[1\] “My name is Kristina”
+    [1] "My name is Kristina"
 
 > In this example, we used the paste() function to collapse the elements
 > of a single character | vector. paste() can also be used to join the
 > elements of multiple character vectors.
 
-`paste("Hello", "world!", sep = " ")`
+``` r
+paste("Hello", "world!", sep = " ")
+```
 
-\[1\] “Hello world!”
+    [1] "Hello world!"
 
 > For a slightly more complicated example, we can join two vectors, each
 > of length 3. Use | paste() to join the integer vector 1:3 with the
 > character vector c(“X”, “Y”, “Z”). This | time, use sep = “” to leave
 > no space between the joined elements.
 
-`paste(1:3,c("X", "Y", "Z"),sep = "")`
+``` r
+paste(1:3,c("X", "Y", "Z"),sep = "")
+```
 
-\[1\] “1X” “2Y” “3Z”
+    [1] "1X" "2Y" "3Z"
 
 > Vector recycling! Try paste(LETTERS, 1:4, sep = “-”), where LETTERS is
 > a predefined variable | in R containing a character vector of all 26
 > letters in the English alphabet
 
-`paste(LETTERS, 1:4, sep = "-")`
+``` r
+paste(LETTERS, 1:4, sep = "-")
+```
 
-\[1\] “A-1” “B-2” “C-3” “D-4” “E-1” “F-2” “G-3” “H-4” “I-1” “J-2” “K-3”
-“L-4” “M-1” “N-2” “O-3” \[16\] “P-4” “Q-1” “R-2” “S-3” “T-4” “U-1” “V-2”
-“W-3” “X-4” “Y-1” “Z-2”
+     [1] "A-1" "B-2" "C-3" "D-4" "E-1" "F-2" "G-3" "H-4" "I-1" "J-2" "K-3" "L-4"
+    [13] "M-1" "N-2" "O-3" "P-4" "Q-1" "R-2" "S-3" "T-4" "U-1" "V-2" "W-3" "X-4"
+    [25] "Y-1" "Z-2"
 
 <figure>
 <img src="./Images/4lesson.png" alt="5.6. Прохождение 4 подкурса" />
@@ -1026,87 +1177,106 @@ seq_along(my_seq) to see it in action.
 > illustrate, let’s create a | vector c(44, NA, 5, NA) and assign it to
 > a variable x.
 
-`x <- c(44, NA, 5, NA)`
+``` r
+x <- c(44, NA, 5, NA)
+```
 
 > To make things a little more interesting, lets create a vector
 > containing 1000 draws from a  
 > standard normal distribution with y \<- rnorm(1000).
 
-`y <- rnorm(1000)`
-
-`z <- rep(NA, 1000)`
+``` r
+y <- rnorm(1000)
+z <- rep(NA, 1000)
+```
 
 > Finally, let’s select 100 elements at random from these 2000 values
 > (combining y and z) such | that we don’t know how many NAs we’ll wind
 > up with or what positions they’ll occupy in our | final vector –
 > my_data \<- sample(c(y, z), 100).
 
-`my_data <- sample(c(y, z), 100)`
+``` r
+my_data <- sample(c(y, z), 100)
+```
 
 > Let’s first ask the question of where our NAs are located in our data.
 > The is.na() function | tells us whether each element of a vector is
 > NA. Call is.na() on my_data and assign the | result to my_na.
 
-`my_na <- is.na(my_data)` `my_na`
+``` r
+my_na <- is.na(my_data)
+my_na
+```
 
-\[1\] TRUE FALSE TRUE FALSE FALSE TRUE TRUE FALSE FALSE TRUE TRUE TRUE
-TRUE TRUE TRUE \[16\] TRUE TRUE TRUE FALSE TRUE FALSE FALSE TRUE TRUE
-TRUE TRUE FALSE FALSE FALSE TRUE \[31\] FALSE TRUE FALSE TRUE TRUE TRUE
-TRUE TRUE FALSE FALSE FALSE TRUE FALSE FALSE FALSE \[46\] TRUE TRUE
-FALSE TRUE FALSE FALSE TRUE FALSE TRUE FALSE TRUE TRUE TRUE TRUE FALSE
-\[61\] FALSE FALSE TRUE TRUE FALSE TRUE FALSE FALSE FALSE FALSE TRUE
-FALSE FALSE FALSE TRUE \[76\] FALSE TRUE FALSE FALSE FALSE FALSE TRUE
-FALSE FALSE FALSE TRUE TRUE TRUE FALSE FALSE \[91\] TRUE FALSE TRUE TRUE
-FALSE FALSE FALSE TRUE FALSE TRUE
+      [1]  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE
+     [13] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE
+     [25]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE
+     [37] FALSE  TRUE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE  TRUE FALSE
+     [49]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE
+     [61] FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE FALSE  TRUE
+     [73] FALSE  TRUE  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE
+     [85] FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE  TRUE FALSE
+     [97]  TRUE  TRUE FALSE  TRUE
 
-In our previous discussion of logical operators, we introduced the `==`
-operator as a method | of testing for equality between two objects. So,
-you might think the expression my_data == | NA yields the same results
-as is.na(). Give it a try.
+``` r
+my_data == NA
+```
 
-`my_data == NA`
+      [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+     [26] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+     [51] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+     [76] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
 
-\[1\] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
-NA NA NA NA NA NA NA NA \[31\] NA NA NA NA NA NA NA NA NA NA NA NA NA NA
-NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA \[61\] NA NA NA NA NA NA
-NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
-\[91\] NA NA NA NA NA NA NA NA NA NA
+``` r
+sum(my_na)
+```
 
-`sum(my_na)`
+    [1] 48
 
-\[1\] 50
+``` r
+my_data
+```
 
-`my_data`
-
-\[1\] NA 0.08209369 NA -0.42872263 -0.14156842 NA NA \[8\] -1.45966217
--1.15053720 NA NA NA NA NA \[15\] NA NA NA NA -0.45271055 NA -0.23137182
-\[22\] 0.48245015 NA NA NA NA -1.09895359 -1.12385581 \[29\] -0.12964320
-NA -1.56349769 NA 0.68954600 NA NA \[36\] NA NA NA -2.03185928
--0.54556963 2.28320931 NA \[43\] 1.40874676 0.21981532 -0.97296746 NA NA
--0.82545868 NA \[50\] -1.17225414 -0.51984540 NA 1.08350245 NA
-0.87548634 NA \[57\] NA NA NA -1.83563125 0.06955929 0.91486404 NA
-\[64\] NA -0.51990848 NA 2.20354151 1.20321629 -0.71166109 1.09706533
-\[71\] NA 0.61902130 1.60244388 -0.13682241 NA -0.26479588 NA \[78\]
--0.45487558 -0.60552429 0.28852800 -1.95423497 NA -1.10399354
--0.51967323 \[85\] 0.89097507 NA NA NA -2.07708823 2.15665628 NA \[92\]
-1.94344608 NA NA -0.49497902 1.17347370 -0.70133474 NA \[99\] 1.04168204
-NA
+      [1]           NA -1.246431800           NA           NA           NA
+      [6]           NA           NA  1.051538348  1.533604107  1.009417848
+     [11]  0.646217589 -0.833247569 -0.134462804 -0.437567676  0.008749627
+     [16] -0.181072656  0.633656218  0.411980175           NA -0.981891692
+     [21]  0.918332980  0.503722468  0.163183548           NA           NA
+     [26]           NA           NA -0.988440417  0.195451010 -1.525860532
+     [31]  1.425234167           NA -0.303335692 -0.193094942           NA
+     [36] -1.959704521 -0.458687321           NA           NA -0.114312512
+     [41]  1.905560988           NA           NA  1.260307469 -0.139743040
+     [46]           NA           NA  0.551756699           NA           NA
+     [51]           NA -0.679969847           NA           NA -0.663766365
+     [56]  0.521069077           NA           NA           NA           NA
+     [61] -2.218321989  1.531802256           NA           NA           NA
+     [66]           NA -1.585436394  0.871578644 -0.993649984           NA
+     [71] -0.088940030           NA -1.126314759           NA           NA
+     [76]           NA  0.416674087           NA  0.785570692 -0.310761580
+     [81] -1.950751654  1.096262458           NA  0.923978076 -0.437157179
+     [86]  0.408003285           NA           NA  0.334162819           NA
+     [91]  0.460246532           NA -0.003150802           NA           NA
+     [96] -1.710374244           NA           NA -0.059145381           NA
 
 > Now that we’ve got NAs down pat, let’s look at a second type of
 > missing value – NaN, which | stands for ‘not a number’. To generate
 > NaN, try dividing (using a forward slash) 0 by 0 now.
 
-`0 /0`
+``` r
+0 /0
+```
 
-\[1\] NaN
+    [1] NaN
 
 > Let’s do one more, just for fun. In R, Inf stands for infinity. What
 > happens if you subtract  
 > Inf from Inf?
 
-`Inf - Inf`
+``` r
+Inf - Inf
+```
 
-\[1\] NaN
+    [1] NaN
 
 <figure>
 <img src="./Images/5lesson.png" alt="5.7. Прохождение 5 подкурса" />
