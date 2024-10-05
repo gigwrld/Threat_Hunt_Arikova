@@ -89,6 +89,7 @@ editor: "visual"
 
 ![*2.2. Установка Rstudio*](./Images/installFileRStudio.png)
 
+
 ### Шаг 3.Установка программного пакета swirl
 
 Есть 2 способа скачать:
@@ -104,6 +105,7 @@ editor: "visual"
   
 ![*3.2. Установка swirl*](./Images/installSwirl2.png)
 
+
 ### Шаг 4. Запуск задания
 
 На данном этапе происходит запуск задания с помошью следующей команды: 
@@ -116,7 +118,9 @@ editor: "visual"
 
 ![*4.2. Запуск курса*](./Images/RProgramming.png)
 
+
 ### Шаг 5. Выполнение покурсов
+
 
 #### 5.1. Basic Building Blocks
 
@@ -340,6 +344,7 @@ c(1, 2, 3, 4) + c(0, 10, 100)
 | change 100 to 1000 and hit Enter. If the up arrow doesn't work for you, just type the
 | corrected command.
 
+
 ```{r}
 z*2+1000
 ```
@@ -359,10 +364,10 @@ z*2+1000
 my_div
 ```
 
-
 >| Perseverance, that's the answer.
 
 ![*5.2. Прохождение 1 подкурса*](./Images/1lesson.png)
+
 
 #### Выводы по подкурсу Basic Building Blocks:
 
@@ -383,6 +388,7 @@ my_div
       Сначала R умножил каждый из трех элементов в z на 2. Затем он добавил по 100 к каждому элементу.
     
 8. Чтобы извлечь квадратный корень, используйте функцию sqrt(), а чтобы получить абсолютное значение, используйте функцию abs().
+   
    
 #### 5.2 Workspace and Files
 
@@ -499,6 +505,7 @@ setwd("testdir")
 | for the specific project that you are working on. In fact, organizing your work in R
 | packages using RStudio is an excellent option. Check out RStudio at http://www.rstudio.com/
 
+
 ```{r}
 file.create("mytest.R")
 ```
@@ -506,6 +513,7 @@ file.create("mytest.R")
 
 >| This should be the only file in this newly created directory. Let's check this by listing
 | all the files in the current directory.
+
 
 ```{r}
 list.files()
@@ -552,6 +560,7 @@ file.copy("mytest2.R","mytest3.R")
 
 >| Provide the relative path to the file "mytest3.R" by using file.path().
 
+
 ```{r}
 file.path("mytest3.R")
 ```
@@ -560,6 +569,7 @@ file.path("mytest3.R")
 >| You can use file.path to construct file and directory paths that are independent of the
 | operating system your R code is running on. Pass 'folder1' and 'folder2' as arguments to
 | file.path to make a platform-independent pathname.
+
 
 ```{r}
 file.path("folder1", "folder2")
@@ -592,6 +602,7 @@ dir.create(file.path('testdir2', 'testdir3'), recursive = TRUE)
 | variable old.dir with the full path for the orginal working directory at the start of these
 | questions.)
 
+
 ```{r}
 setwd(old.dir)
 ```
@@ -604,6 +615,7 @@ setwd(old.dir)
 | similar enough to mention.
 
 ![*5.4. Прохождение 2 подкурса*](./Images/2lesson.png)
+
 #### Выводы по подкурсу Workspace and Files:
 
 1. R предоставляет общий API (общий набор команд) для взаимодействия с файлами.
@@ -735,7 +747,7 @@ rep(c(0, 1, 2), each = 10)
  
  ![*5.5. Прохождение 3 подкурса*](./Images/3lesson.png)
  
- Выводы по покурсу Sequences of Numbers:
+#### Выводы по покурсу Sequences of Numbers:
  
 1. Самый простой способ создать последовательность чисел в R - это использовать оператор `:`
 
