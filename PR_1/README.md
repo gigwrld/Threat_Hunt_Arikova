@@ -547,8 +547,7 @@ ls()
 dir()
 ```
 
-    [1] "Images"         "mytest2.R"      "mytest3.R"      "PR_1.rmarkdown"
-    [5] "PR_1.Rmd"       "README.md"      "testdir"        "testdir2"      
+    [1] "Images"         "PR_1.rmarkdown" "PR_1.Rmd"       "README.md"     
 
 > As we go through this lesson, you should be examining the help page
 > for each new function.  
@@ -608,8 +607,6 @@ old.dir <- getwd()
 dir.create("testdir")
 ```
 
-    Warning in dir.create("testdir"): 'testdir' уже существует
-
 > We will do all our work in this new directory and then delete it after
 > we are done. This is  
 > the R analog to “Take only pictures, leave only footprints.”
@@ -641,9 +638,8 @@ file.create("mytest.R")
 list.files()
 ```
 
-    [1] "Images"         "mytest.R"       "mytest2.R"      "mytest3.R"     
-    [5] "PR_1.rmarkdown" "PR_1.Rmd"       "README.md"      "testdir"       
-    [9] "testdir2"      
+    [1] "Images"         "mytest.R"       "PR_1.rmarkdown" "PR_1.Rmd"      
+    [5] "README.md"      "testdir"       
 
 > Check to see if “mytest.R” exists in the working directory using the
 > file.exists() function.
@@ -667,9 +663,9 @@ file.info("mytest.R")
 ```
 
              size isdir mode               mtime               ctime
-    mytest.R    0 FALSE  666 2024-10-05 10:52:27 2024-10-05 10:52:27
+    mytest.R    0 FALSE  666 2024-10-05 10:56:20 2024-10-05 10:56:20
                            atime exe
-    mytest.R 2024-10-05 10:52:27  no
+    mytest.R 2024-10-05 10:56:20  no
 
 > Change the name of the file “mytest.R” to “mytest2.R” by using
 > file.rename().
@@ -694,7 +690,7 @@ file.rename("mytest.R", "mytest2.R")
 file.copy("mytest2.R","mytest3.R")
 ```
 
-    [1] FALSE
+    [1] TRUE
 
 > You now have two files in the current directory. That may not seem
 > very interesting. But  
@@ -735,9 +731,6 @@ file.path("folder1", "folder2")
 ``` r
 dir.create(file.path("testdir2", "testdir3"), recursive = TRUE)
 ```
-
-    Warning in dir.create(file.path("testdir2", "testdir3"), recursive = TRUE):
-    'testdir2\testdir3' уже существует
 
 ``` r
 ?dir.create
@@ -1208,15 +1201,15 @@ my_na <- is.na(my_data)
 my_na
 ```
 
-      [1]  TRUE  TRUE FALSE  TRUE FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE
-     [13] FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE
-     [25]  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-     [37] FALSE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE
-     [49]  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE
-     [61] FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
-     [73]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE
-     [85] FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE
-     [97]  TRUE FALSE  TRUE  TRUE
+      [1]  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE
+     [13] FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
+     [25] FALSE  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE
+     [37] FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
+     [49]  TRUE FALSE  TRUE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE  TRUE
+     [61]  TRUE FALSE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE
+     [73]  TRUE  TRUE  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE
+     [85] FALSE  TRUE FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE
+     [97] FALSE  TRUE FALSE FALSE
 
 ``` r
 my_data == NA
@@ -1231,32 +1224,32 @@ my_data == NA
 sum(my_na)
 ```
 
-    [1] 55
+    [1] 47
 
 ``` r
 my_data
 ```
 
-      [1]           NA           NA  1.111842535           NA  0.701986107
-      [6]  0.636063576           NA  1.010545397           NA  0.972104755
-     [11]           NA  0.002011651 -0.064529162 -0.124192802  0.682045280
-     [16]           NA           NA           NA  0.116801255  0.180013677
-     [21] -0.570853201 -0.699107206           NA           NA           NA
-     [26] -0.291912233  2.076193225  1.573171388           NA           NA
-     [31]           NA           NA           NA           NA           NA
-     [36]           NA  0.291383237           NA           NA           NA
-     [41]           NA -0.356746432           NA           NA           NA
-     [46] -1.161295468           NA           NA           NA           NA
-     [51] -0.065010031           NA -1.450994572  0.550488861 -1.661610172
-     [56]           NA           NA           NA -1.244245737  0.617129959
-     [61]  0.436232385           NA  0.164467316 -0.888771139           NA
-     [66]  0.620520365  0.787911238 -1.172515506 -0.966897166           NA
-     [71] -1.437401331  0.159423063           NA           NA           NA
-     [76]           NA           NA -0.650876503           NA -1.133982735
-     [81]           NA  0.428689765           NA -1.232057018 -0.453766948
-     [86]  1.369259527  1.252657734           NA           NA           NA
-     [91]  0.530793032           NA           NA           NA -0.234077444
-     [96] -0.073445060           NA -0.105473209           NA           NA
+      [1]           NA           NA           NA           NA -1.222515885
+      [6] -0.064840816           NA -1.450620006  1.334514572  0.003850504
+     [11] -0.103766491           NA  1.192125523           NA           NA
+     [16]  0.353029037           NA  0.801011048  1.435379352  0.694839591
+     [21] -0.476508609  0.248181177  1.728126055           NA  0.351778069
+     [26]           NA -0.399148103  0.894380438           NA           NA
+     [31]           NA           NA -0.743534601           NA           NA
+     [36]  0.396319825 -1.220574747           NA  2.849372229           NA
+     [41]  1.448061503  0.544653033 -1.423101425 -1.499027800 -1.278788430
+     [46] -1.376692943           NA -0.863850823           NA  0.519792102
+     [51]           NA  0.951181614  0.105699137           NA           NA
+     [56] -0.027396845           NA  2.204089151  2.071228570           NA
+     [61]           NA  0.376837795           NA -0.731616464           NA
+     [66]           NA           NA           NA           NA           NA
+     [71]  0.731119806           NA           NA           NA           NA
+     [76]  0.044541566           NA -2.280496909           NA  0.605809455
+     [81] -0.030179695 -0.622106480           NA -2.014314785 -0.138899322
+     [86]           NA -0.804031844  0.978557388           NA -0.882638207
+     [91]           NA -0.038275441           NA           NA  2.259425878
+     [96] -0.380726911 -0.006834074           NA  1.100325897 -0.239772646
 
 > Now that we’ve got NAs down pat, let’s look at a second type of
 > missing value – NaN, which | stands for ‘not a number’. To generate
