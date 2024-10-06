@@ -35,15 +35,11 @@ Arikova Kristina
 4.  Запустить задание
 5.  Запустить подкурсы и выполнить:
 
-5.1 базовые структурные блоки (Basic Building Blocks)
-
-5.2 рабочие пространства и файлы (Workspace and Files)
-
-5.3 последовательности чисел (Sequences of Numbers)
-
-5.4 векторы (Vectors)
-
-5.5 пропущенные значения (Missing Values)
+-   базовые структурные блоки (Basic Building Blocks)
+-   рабочие пространства и файлы (Workspace and Files)
+-   последовательности чисел (Sequences of Numbers)
+-   векторы (Vectors)
+-   пропущенные значения (Missing Values)
 
 1.  Составить отчет и выложить его и исходный qmd/rmd файл в свой
     репозиторий Github
@@ -53,21 +49,23 @@ Arikova Kristina
 ### Шаг 1. Установка интерпретатора R
 
 На данном шаге производится настройка рабочего окружения, а именно
-установка интерпретатора R. 1. На сайте posit скачиваем R.
+установка интерпретатора R.
+
+На сайте posit скачиваем R.
 
 <figure>
 <img src="./Images/installR1.png" alt="1.1. Установка R" />
 <figcaption aria-hidden="true"><em>1.1. Установка R</em></figcaption>
 </figure>
 
-1.  На cran.rstudio.com выбираем интерпретатор R для ОС Windows.
+На cran.rstudio.com выбираем интерпретатор R для ОС Windows.
 
 <figure>
 <img src="./Images/installR2.png" alt="1.2. Установка R" />
 <figcaption aria-hidden="true"><em>1.2. Установка R</em></figcaption>
 </figure>
 
-1.  С помощью установочного файла загружаем R.
+С помощью установочного файла загружаем R.
 
 <figure>
 <img src="./Images/installR3.png" alt="1.3. Установка R" />
@@ -79,7 +77,7 @@ Arikova Kristina
 На данном шаге продолжается настройка рабочего окружения, а именно
 установка ПО Rstudio IDE.
 
-1.  На сайте posit скачиваем Rstudio
+На сайте posit скачиваем Rstudio
 
 <figure>
 <img src="./Images/installR1.png" alt="2.1. Установка Rstudio" />
@@ -87,7 +85,7 @@ Arikova Kristina
 Rstudio</em></figcaption>
 </figure>
 
-1.  С помощью установочного файла загружаем Rstudio.
+С помощью установочного файла загружаем Rstudio.
 
 <figure>
 <img src="./Images/installFileRStudio.png"
@@ -100,9 +98,7 @@ Rstudio</em></figcaption>
 
 Есть 2 способа скачать:
 
-1.  Написать в консоли следующую строчку и нажать Enter:
-
-<!-- -->
+Написать в консоли следующую строчку и нажать Enter:
 
     `install.packages("swirl")`
 
@@ -112,7 +108,7 @@ Rstudio</em></figcaption>
 swirl</em></figcaption>
 </figure>
 
-2.Выполнить установку в Packages RStudio.
+Выполнить установку в Packages RStudio.
 
 <figure>
 <img src="./Images/installSwirl2.png" alt="3.2. Установка swirl" />
@@ -471,13 +467,13 @@ my_div
     функции, вы можете получить доступ к встроенной справке с помощью
     команды `?`
 
-6.Можно объединить векторы, чтобы создать новый вектор.
+6.  Можно объединить векторы, чтобы создать новый вектор.
 
-7.Числовые векторы могут использоваться в арифметических выражениях.
-Сначала R умножил каждый из трех элементов в z на 2. Затем он добавил по
-100 к каждому элементу.
+7.  Числовые векторы могут использоваться в арифметических выражениях.
+    Сначала R умножил каждый из трех элементов в z на 2. Затем он
+    добавил по 100 к каждому элементу.
 
-1.  Чтобы извлечь квадратный корень, используйте функцию sqrt(), а чтобы
+8.  Чтобы извлечь квадратный корень, используйте функцию sqrt(), а чтобы
     получить абсолютное значение, используйте функцию abs().
 
 #### 5.2 Workspace and Files
@@ -541,7 +537,8 @@ ls()
 dir()
 ```
 
-    [1] "Images"           "README.md"        "README.rmarkdown" "README.Rmd"      
+    [1] "Images"           "mytest2.R"        "mytest3.R"        "README.md"       
+    [5] "README.rmarkdown" "README.Rmd"       "testdir"          "testdir2"        
 
 > As we go through this lesson, you should be examining the help page
 > for each new function.  
@@ -601,6 +598,8 @@ old.dir <- getwd()
 dir.create("testdir")
 ```
 
+    Warning in dir.create("testdir"): 'testdir' уже существует
+
 > We will do all our work in this new directory and then delete it after
 > we are done. This is  
 > the R analog to “Take only pictures, leave only footprints.”
@@ -632,8 +631,9 @@ file.create("mytest.R")
 list.files()
 ```
 
-    [1] "Images"           "mytest.R"         "README.md"        "README.rmarkdown"
-    [5] "README.Rmd"       "testdir"         
+    [1] "Images"           "mytest.R"         "mytest2.R"        "mytest3.R"       
+    [5] "README.md"        "README.rmarkdown" "README.Rmd"       "testdir"         
+    [9] "testdir2"        
 
 > Check to see if “mytest.R” exists in the working directory using the
 > file.exists() function.
@@ -657,9 +657,9 @@ file.info("mytest.R")
 ```
 
              size isdir mode               mtime               ctime
-    mytest.R    0 FALSE  666 2024-10-06 20:48:17 2024-10-06 20:48:17
+    mytest.R    0 FALSE  666 2024-10-06 20:56:40 2024-10-06 20:56:40
                            atime exe
-    mytest.R 2024-10-06 20:48:17  no
+    mytest.R 2024-10-06 20:56:40  no
 
 > Change the name of the file “mytest.R” to “mytest2.R” by using
 > file.rename().
@@ -684,7 +684,7 @@ file.rename("mytest.R", "mytest2.R")
 file.copy("mytest2.R","mytest3.R")
 ```
 
-    [1] TRUE
+    [1] FALSE
 
 > You now have two files in the current directory. That may not seem
 > very interesting. But  
@@ -725,6 +725,9 @@ file.path("folder1", "folder2")
 ``` r
 dir.create(file.path("testdir2", "testdir3"), recursive = TRUE)
 ```
+
+    Warning in dir.create(file.path("testdir2", "testdir3"), recursive = TRUE):
+    'testdir2\testdir3' уже существует
 
 ``` r
 ?dir.create
@@ -790,13 +793,13 @@ setwd(old.dir)
 
 9.  `file.rename()` - поменять название файла.
 
-10.`file.remove()` - удалить файл.
+10. `file.remove()` - удалить файл.
 
-1.  `file.copy()` - создать копию.
+11. `file.copy()` - создать копию.
 
-2.  `file.path()` - относительный путь к файлу.
+12. `file.path()` - относительный путь к файлу.
 
-3.  `file.path()` - построения путей к файлам и каталогам, которые не
+13. `file.path()` - построения путей к файлам и каталогам, которые не
     зависят от операционной системы.
 
 14.`setwd()` - перейти в нужную директорию.
@@ -1139,18 +1142,19 @@ paste(LETTERS, 1:4, sep = "-")
     “пересечение”). Наконец, !A является отрицанием A и ИСТИННО, когда A
     ЛОЖНО, и наоборот.
 
-5.Символьные векторы также очень распространены в R. Двойные кавычки
-используются для выделения символов объектов, как в следующем примере.
+5.  Символьные векторы также очень распространены в R. Двойные кавычки
+    используются для выделения символов объектов, как в следующем
+    примере.
 
-1.  Аргумент `collapse` для функции `paste()` сообщает R, что когда мы
+6.  Аргумент `collapse` для функции `paste()` сообщает R, что когда мы
     объединяем элементы вектора символов, мы хотели бы разделить их
     одиночными пробелами.
 
-2.  `paste()` - для сворачивания элементов одного символа, функция
+7.  `paste()` - для сворачивания элементов одного символа, функция
     `paste()` также может использоваться для объединения элементов
     нескольких символьных векторов.
 
-3.  `LETTERS` - предопределенная переменная в R, содержащем символьный
+8.  `LETTERS` - предопределенная переменная в R, содержащем символьный
     вектор из всех 26 букв английского алфавита.
 
 #### 5.5 Missing Values
@@ -1200,15 +1204,15 @@ my_na <- is.na(my_data)
 my_na
 ```
 
-      [1] FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
-     [13]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE
-     [25] FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
-     [37]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE
-     [49] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE  TRUE
-     [61] FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE
-     [73] FALSE  TRUE FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE FALSE  TRUE
-     [85]  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
-     [97] FALSE  TRUE FALSE FALSE
+      [1] FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE
+     [13]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE
+     [25]  TRUE FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE
+     [37]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE
+     [49] FALSE  TRUE FALSE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE  TRUE
+     [61]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE FALSE
+     [73]  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE
+     [85] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
+     [97]  TRUE FALSE FALSE FALSE
 
 ``` r
 my_data == NA
@@ -1223,29 +1227,29 @@ my_data == NA
 sum(my_na)
 ```
 
-    [1] 46
+    [1] 47
 
 ``` r
 my_data
 ```
 
-      [1] -0.86007180  0.44056210          NA          NA  0.21659495  1.49120473
-      [7]          NA  0.35803319  2.32601836  0.12738176  0.52607030 -0.48150565
-     [13]          NA -0.19178221          NA  0.27036592          NA  0.92831818
-     [19]          NA  0.87645334          NA  0.11383133          NA  1.03251908
-     [25] -1.55584002 -0.59320292          NA          NA          NA          NA
-     [31]  0.40906953 -1.05639389  0.32424286 -0.46071636 -0.92975193 -0.21070133
-     [37]          NA          NA          NA          NA          NA          NA
-     [43]          NA          NA  1.00076868  0.83718929          NA          NA
-     [49] -0.42849745          NA          NA          NA          NA          NA
-     [55]          NA -0.39009190 -0.49472657          NA  0.03294848          NA
-     [61] -1.01727169 -0.20082909          NA          NA  0.25803451 -0.02364019
-     [67]          NA  0.23390188  0.63322706          NA -1.04410347  1.01045080
-     [73] -0.27764102          NA  1.38451936          NA          NA          NA
-     [79] -0.98414903          NA          NA -0.56422823  0.47175183          NA
-     [85]          NA          NA -0.71966793  0.65150329 -0.41609739 -2.01915002
-     [91]  0.67743028 -0.64225534 -0.66761052  0.12677740 -0.74640638          NA
-     [97] -0.33321584          NA -1.73960363 -0.16497666
+      [1] -0.21470813 -1.02875374 -0.86330053          NA          NA -0.30752921
+      [7]          NA          NA          NA  0.32449914          NA          NA
+     [13]          NA          NA          NA -0.49806574          NA          NA
+     [19]          NA          NA  2.35018662  0.58726193          NA  0.71015049
+     [25]          NA -0.59639289 -0.91707383          NA -0.70895885          NA
+     [31]          NA  1.11350958 -0.19204570 -2.23372092 -0.56846146          NA
+     [37]          NA  1.72787839  2.32480515 -0.42445658 -0.43169275  0.70423795
+     [43] -0.49306718  1.19704295          NA          NA  1.79529655 -0.22173566
+     [49]  0.93354098          NA  0.84894155          NA  0.13139368  1.11789587
+     [55]          NA          NA  1.31513163 -0.65300569          NA          NA
+     [61]          NA          NA          NA  0.84146822          NA          NA
+     [67] -0.95657646          NA          NA  1.76194683          NA  0.13115809
+     [73]          NA -0.76906654          NA          NA          NA -1.18103425
+     [79]  1.11670053 -0.74047703          NA          NA          NA  0.86503750
+     [85]  0.08236518  1.26371097 -0.15224145          NA  1.02286303 -0.70853952
+     [91]  0.73990766 -0.46946736 -0.13375245  1.28237855          NA -0.97260427
+     [97]          NA  0.71157302  0.53838588 -0.64425259
 
 > Now that we’ve got NAs down pat, let’s look at a second type of
 > missing value – NaN, which | stands for ‘not a number’. To generate
