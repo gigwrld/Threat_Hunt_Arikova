@@ -1,8 +1,6 @@
-# PR_2_2
+# Практика 002
 Arikova Kristina
 2024-09-21
-
-# Практика 002
 
 По дисциплине “Информационно-аналитические технологии поиска угроз
 инорфмационной безопасности”
@@ -18,10 +16,22 @@ Arikova Kristina
     пакета dplyr – функции `select()`, `filter()`,`mutate()`,
     `arrange()`, `group_by()`
 
-## Выполнение работы
+## Исходные данные
 
-Проанализировать встроенный в пакет dplyr набор данных starwars с
-помощью языка R.
+1.  Компьютер
+2.  ОС Windows
+3.  Rstudio
+4.  Библиотека swirl
+5.  Github
+
+## Общий план выполнения работы
+
+1.  Проанализировать встроенный в пакет dplyr набор данных starwars
+2.  Выполнить аталитические задачи с помощью языка R
+
+## Содержание ЛР
+
+### Шаг 1. Атализ встроенного в пакет dplyr набор данных starwars с помощью языка R
 
 ``` r
 library(dplyr)
@@ -59,7 +69,9 @@ starwars
     # ℹ 5 more variables: homeworld <chr>, species <chr>, films <list>,
     #   vehicles <list>, starships <list>
 
-### 1. Сколько строк в датафрейме?
+### Шаг 2. Выполнение аталитических задач с помощью языка R
+
+#### 1. Сколько строк в датафрейме?
 
 ``` r
 starwars %>% nrow()
@@ -67,7 +79,7 @@ starwars %>% nrow()
 
     [1] 87
 
-### 2. Сколько столбцов в датафрейме?
+#### 2. Сколько столбцов в датафрейме?
 
 ``` r
 starwars %>% ncol()
@@ -75,7 +87,7 @@ starwars %>% ncol()
 
     [1] 14
 
-### 3.Как просмотреть примерный вид датафрейма?
+#### 3.Как просмотреть примерный вид датафрейма?
 
 ``` r
 starwars %>% glimpse()
@@ -98,7 +110,7 @@ starwars %>% glimpse()
     $ vehicles   <list> <"Snowspeeder", "Imperial Speeder Bike">, <>, <>, <>, "Imp…
     $ starships  <list> <"X-wing", "Imperial shuttle">, <>, <>, "TIE Advanced x1",…
 
-### 4. Сколько уникальных рас персонажей (species) представлено в данных?
+#### 4. Сколько уникальных рас персонажей (species) представлено в данных?
 
 ``` r
 length(unique(starwars$species))
@@ -106,7 +118,7 @@ length(unique(starwars$species))
 
     [1] 38
 
-### 5. Найти самого высокого персонажа.
+#### 5. Найти самого высокого персонажа.
 
 ``` r
 starwars %>% arrange(desc(height)) %>% head(1) %>% select(name)
@@ -117,7 +129,7 @@ starwars %>% arrange(desc(height)) %>% head(1) %>% select(name)
       <chr>      
     1 Yarael Poof
 
-### 6. Найти всех персонажей ниже 170.
+#### 6. Найти всех персонажей ниже 170.
 
 ``` r
 starwars %>% filter(height < 170)%>%
@@ -139,7 +151,7 @@ select(name)
     10 Watto                
     # ℹ 12 more rows
 
-### 7. Подсчитать ИМТ (индекс массы тела) для всех персонажей.
+#### 7. Подсчитать ИМТ (индекс массы тела) для всех персонажей.
 
 ``` r
 starwars %>% mutate("BMI" = mass/(height*height)) %>% select(name,BMI)
@@ -160,7 +172,7 @@ starwars %>% mutate("BMI" = mass/(height*height)) %>% select(name,BMI)
     10 Obi-Wan Kenobi     0.00232
     # ℹ 77 more rows
 
-### 8.Найти 10 самых “вытянутых” персонажей.
+#### 8.Найти 10 самых “вытянутых” персонажей.
 
 ``` r
 starwars %>% mutate(Stretching = mass/height)  %>% arrange(desc(Stretching)) %>% head(10) %>% select(name,Stretching) 
@@ -180,7 +192,7 @@ starwars %>% mutate(Stretching = mass/height)  %>% arrange(desc(Stretching)) %>%
      9 Dexter Jettster            0.515
     10 Chewbacca                  0.491
 
-### 10. Найти средний возраст персонажей каждой расы вселенной Звездных войн.
+#### 10. Найти средний возраст персонажей каждой расы вселенной Звездных войн.
 
 ``` r
 starwars %>% group_by(species) %>% filter(!is.na(birth_year)) %>% summarise(Sr = mean(birth_year)) %>% select(species, Sr) 
@@ -205,7 +217,7 @@ starwars %>% group_by(species) %>% filter(!is.na(birth_year)) %>% summarise(Sr =
     14 Yoda's species 896  
     15 Zabrak          54  
 
-### 10. Найти самый распространенный цвет глаз персонажей вселенной Звездных войн.
+#### 10. Найти самый распространенный цвет глаз персонажей вселенной Звездных войн.
 
 ``` r
 starwars %>% filter(!is.na(eye_color)) %>% group_by(eye_color) %>% summarise(k = n()) %>% arrange(desc(k)) %>% head(1) %>% select(eye_color) 
@@ -216,7 +228,7 @@ starwars %>% filter(!is.na(eye_color)) %>% group_by(eye_color) %>% summarise(k =
       <chr>    
     1 brown    
 
-### 11. Подсчитать среднюю длину имени в каждой расе вселенной Звездных войн.
+#### 11. Подсчитать среднюю длину имени в каждой расе вселенной Звездных войн.
 
 ``` r
 starwars %>% mutate(l=nchar(name)) %>% group_by(species) %>% summarise(mean = mean(l)) %>% select(species,mean)
@@ -237,10 +249,15 @@ starwars %>% mutate(l=nchar(name)) %>% group_by(species) %>% summarise(mean = me
     10 Gungan    11.7 
     # ℹ 28 more rows
 
-## Вывод
+## Оценка результата
 
 1.  Получены практические навыки использования языка программирования R
     для обработки данных
 2.  Закреплены знания базовых типов данных языка R
 3.  Получены практические навыки использования функций обработки данных
     пакета dplyr
+
+## Вывод
+
+В результате выполнения работы были освоены основные инструменты
+обработки данных пакета dplyr языка R.

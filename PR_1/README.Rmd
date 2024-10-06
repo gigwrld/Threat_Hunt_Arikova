@@ -1,5 +1,5 @@
 ---
-title: "PR_1"
+title: "Практика 001"
 author: "Arikova Kristina"
 date: "2024-09-07"
 format:
@@ -7,8 +7,6 @@ format:
     output-file: "README.md"
 editor: "visual"
 ---
-
-# Практика 001
 
 По дисциплине "Информационно-аналитические технологии поиска угроз инорфмационной безопасности"
 
