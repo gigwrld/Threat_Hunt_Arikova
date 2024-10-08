@@ -32,14 +32,12 @@ Arikova Kristina
 3.  Установить программный пакет swirl:
 4.  Запустить задание
 5.  Запустить подкурсы и выполнить:
-
--   базовые структурные блоки (Basic Building Blocks)
--   рабочие пространства и файлы (Workspace and Files)
--   последовательности чисел (Sequences of Numbers)
--   векторы (Vectors)
--   пропущенные значения (Missing Values)
-
-1.  Составить отчет и выложить его и исходный qmd/rmd файл в свой
+    1.  базовые структурные блоки (Basic Building Blocks)
+    2.  рабочие пространства и файлы (Workspace and Files)
+    3.  последовательности чисел (Sequences of Numbers)
+    4.  векторы (Vectors)
+    5.  пропущенные значения (Missing Values)
+6.  Составить отчет и выложить его и исходный qmd/rmd файл в свой
     репозиторий Github
 
 ## Содержание ЛР
@@ -656,9 +654,9 @@ file.info("mytest.R")
 ```
 
              size isdir mode               mtime               ctime
-    mytest.R    0 FALSE  666 2024-10-08 15:47:22 2024-10-08 15:47:22
+    mytest.R    0 FALSE  666 2024-10-08 15:52:57 2024-10-08 15:52:57
                            atime exe
-    mytest.R 2024-10-08 15:47:22  no
+    mytest.R 2024-10-08 15:52:57  no
 
 > Change the name of the file “mytest.R” to “mytest2.R” by using
 > file.rename().
@@ -1203,15 +1201,15 @@ my_na <- is.na(my_data)
 my_na
 ```
 
-      [1] FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE
-     [13]  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE
-     [25]  TRUE FALSE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE
-     [37]  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE
-     [49]  TRUE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
-     [61] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE  TRUE
-     [73]  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE
-     [85] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
-     [97]  TRUE  TRUE  TRUE  TRUE
+      [1] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE  TRUE FALSE
+     [13] FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE
+     [25]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
+     [37]  TRUE  TRUE  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE
+     [49]  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE
+     [61]  TRUE FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE
+     [73] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE  TRUE
+     [85] FALSE FALSE  TRUE  TRUE  TRUE FALSE  TRUE FALSE FALSE  TRUE  TRUE FALSE
+     [97] FALSE  TRUE FALSE  TRUE
 
 ``` r
 my_data == NA
@@ -1226,29 +1224,29 @@ my_data == NA
 sum(my_na)
 ```
 
-    [1] 42
+    [1] 44
 
 ``` r
 my_data
 ```
 
-      [1] -0.94847880 -0.18543415          NA          NA          NA          NA
-      [7] -0.47517599 -0.86336952          NA -0.13247589  0.67363958  0.79438795
-     [13]          NA  0.43358999  0.09102942 -0.87843351          NA          NA
-     [19] -0.39242023  1.57135030 -0.78497917          NA          NA -0.29190093
-     [25]          NA -1.74197454          NA  1.18561329 -0.47141516          NA
-     [31]          NA -0.34704049 -0.13716636          NA          NA          NA
-     [37]          NA -0.98789154 -0.64028707  0.98035029  0.29690194  1.24457865
-     [43]          NA          NA -0.07685546          NA          NA          NA
-     [49]          NA -0.36362746          NA -0.24691130 -1.49955067 -0.97364341
-     [55]          NA -0.22542964  0.82313963 -0.59196765  0.93839720  2.27534307
-     [61]  0.29263389  0.29286316  0.43050530 -0.53641219  0.48410313  0.19109060
-     [67]          NA -0.46432994          NA  0.69778032          NA          NA
-     [73]          NA  1.70004281          NA -0.87975921          NA  0.19923891
-     [79] -0.05508818 -2.21723277  0.02483067          NA          NA          NA
-     [85] -1.15808884 -1.89839064          NA -0.53997557 -0.93934967 -0.01158219
-     [91] -0.42007596 -1.84393515 -0.34638087  0.02976161  1.02870674          NA
-     [97]          NA          NA          NA          NA
+      [1]  0.50472883  0.28472800  0.23556093  0.10849388  1.54655897          NA
+      [7]  0.52182910          NA -2.32960293  1.82686504          NA -1.60295354
+     [13] -1.66898754          NA          NA -1.40285391 -0.03156362          NA
+     [19]  1.99417769          NA  1.28209716          NA  0.85580168          NA
+     [25]          NA  0.88808973          NA -1.16356131 -1.06464169  1.67829438
+     [31] -0.03195818 -0.27929681 -1.01738041  1.29943671 -1.85786275          NA
+     [37]          NA          NA          NA          NA -1.76894546          NA
+     [43]  0.46479780 -0.47995198 -0.41541186  0.87427826 -0.05819174          NA
+     [49]          NA -0.49695560  1.26408122          NA          NA          NA
+     [55]          NA          NA  1.72587057  0.19016063  0.27861811  1.03899509
+     [61]          NA  0.03434999          NA -0.51049906          NA          NA
+     [67]  0.44399547  0.80626206 -1.60821789          NA          NA          NA
+     [73]  0.71350897 -0.46173124          NA -0.36154509 -0.44201289 -0.70246293
+     [79]  1.45579436          NA          NA -1.43352083          NA          NA
+     [85]  0.31363473 -0.81428024          NA          NA          NA  0.80569851
+     [91]          NA  0.73145698 -0.22228310          NA          NA -2.66227662
+     [97]  2.64857153          NA -0.32653947          NA
 
 > Now that we’ve got NAs down pat, let’s look at a second type of
 > missing value – NaN, which | stands for ‘not a number’. To generate

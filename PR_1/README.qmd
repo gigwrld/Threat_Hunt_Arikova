@@ -35,13 +35,11 @@ editor: "visual"
 3.  Установить программный пакет swirl:
 4.  Запустить задание
 5.  Запустить подкурсы и выполнить:
-
--   базовые структурные блоки (Basic Building Blocks)
--   рабочие пространства и файлы (Workspace and Files)
--   последовательности чисел (Sequences of Numbers)
--   векторы (Vectors)
--   пропущенные значения (Missing Values)
-
+    1.  базовые структурные блоки (Basic Building Blocks)
+    2.  рабочие пространства и файлы (Workspace and Files)
+    3.  последовательности чисел (Sequences of Numbers)
+    4.  векторы (Vectors)
+    5.  пропущенные значения (Missing Values)
 6.  Составить отчет и выложить его и исходный qmd/rmd файл в свой репозиторий Github
 
 ## Содержание ЛР
