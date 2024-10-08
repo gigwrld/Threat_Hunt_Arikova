@@ -536,7 +536,8 @@ dir()
 ```
 
     [1] "Images"           "mytest2.R"        "mytest3.R"        "README.md"       
-    [5] "README.rmarkdown" "README.Rmd"       "testdir"          "testdir2"        
+    [5] "README.qmd"       "README.rmarkdown" "README_no.Rmd"    "testdir"         
+    [9] "testdir2"        
 
 > As we go through this lesson, you should be examining the help page
 > for each new function.  
@@ -613,7 +614,7 @@ setwd("testdir")
 > for the specific project that you are working on. In fact, organizing
 > your work in R  
 > packages using RStudio is an excellent option. Check out RStudio at
-> http://www.rstudio.com/
+> <http://www.rstudio.com/>
 
 ``` r
 file.create("mytest.R")
@@ -629,9 +630,9 @@ file.create("mytest.R")
 list.files()
 ```
 
-    [1] "Images"           "mytest.R"         "mytest2.R"        "mytest3.R"       
-    [5] "README.md"        "README.rmarkdown" "README.Rmd"       "testdir"         
-    [9] "testdir2"        
+     [1] "Images"           "mytest.R"         "mytest2.R"        "mytest3.R"       
+     [5] "README.md"        "README.qmd"       "README.rmarkdown" "README_no.Rmd"   
+     [9] "testdir"          "testdir2"        
 
 > Check to see if “mytest.R” exists in the working directory using the
 > file.exists() function.
@@ -655,9 +656,9 @@ file.info("mytest.R")
 ```
 
              size isdir mode               mtime               ctime
-    mytest.R    0 FALSE  666 2024-10-06 22:06:46 2024-10-06 22:06:46
+    mytest.R    0 FALSE  666 2024-10-08 15:47:22 2024-10-08 15:47:22
                            atime exe
-    mytest.R 2024-10-06 22:06:46  no
+    mytest.R 2024-10-08 15:47:22  no
 
 > Change the name of the file “mytest.R” to “mytest2.R” by using
 > file.rename().
@@ -1202,15 +1203,15 @@ my_na <- is.na(my_data)
 my_na
 ```
 
-      [1] FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-     [13]  TRUE  TRUE FALSE  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE
-     [25] FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
-     [37]  TRUE FALSE FALSE  TRUE  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE
-     [49]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE
-     [61] FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE
-     [73]  TRUE  TRUE FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE  TRUE FALSE  TRUE
-     [85] FALSE  TRUE FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE FALSE
-     [97]  TRUE FALSE FALSE FALSE
+      [1] FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE
+     [13]  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE
+     [25]  TRUE FALSE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE
+     [37]  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE
+     [49]  TRUE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+     [61] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE  TRUE
+     [73]  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE
+     [85] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
+     [97]  TRUE  TRUE  TRUE  TRUE
 
 ``` r
 my_data == NA
@@ -1225,29 +1226,29 @@ my_data == NA
 sum(my_na)
 ```
 
-    [1] 48
+    [1] 42
 
 ``` r
 my_data
 ```
 
-      [1]  0.05359977          NA -0.33952829          NA -0.21742299  0.25641153
-      [7] -1.13001076 -0.05829488 -1.20719208  0.13472230  0.35594962 -0.36665813
-     [13]          NA          NA  0.28185289          NA  0.20469642          NA
-     [19]          NA          NA -0.05499472 -0.05332388  1.14008762          NA
-     [25] -0.56377628 -1.10912444          NA -0.25810013  0.51580049          NA
-     [31]  0.23497531          NA          NA          NA          NA          NA
-     [37]          NA  1.65185156  0.34476359          NA          NA          NA
-     [43] -1.17359293          NA  1.25095515  1.58411055  0.84569891 -0.97814812
-     [49]          NA          NA          NA          NA          NA  0.61401666
-     [55]  0.36119357          NA          NA  0.43137758          NA  0.36451978
-     [61] -1.16379423          NA  0.67220426          NA          NA  0.45621255
-     [67] -0.84348742  1.12934128 -0.58356051          NA          NA -0.17747934
-     [73]          NA          NA -0.62864627  2.20454218          NA -0.94676115
-     [79]          NA -0.81513366          NA          NA -0.59850052          NA
-     [85] -1.07387412          NA  1.11091040 -0.72429874          NA -0.78439366
-     [91]          NA          NA  0.49651566          NA          NA  0.18332604
-     [97]          NA  0.13996049 -0.65994496  0.37991391
+      [1] -0.94847880 -0.18543415          NA          NA          NA          NA
+      [7] -0.47517599 -0.86336952          NA -0.13247589  0.67363958  0.79438795
+     [13]          NA  0.43358999  0.09102942 -0.87843351          NA          NA
+     [19] -0.39242023  1.57135030 -0.78497917          NA          NA -0.29190093
+     [25]          NA -1.74197454          NA  1.18561329 -0.47141516          NA
+     [31]          NA -0.34704049 -0.13716636          NA          NA          NA
+     [37]          NA -0.98789154 -0.64028707  0.98035029  0.29690194  1.24457865
+     [43]          NA          NA -0.07685546          NA          NA          NA
+     [49]          NA -0.36362746          NA -0.24691130 -1.49955067 -0.97364341
+     [55]          NA -0.22542964  0.82313963 -0.59196765  0.93839720  2.27534307
+     [61]  0.29263389  0.29286316  0.43050530 -0.53641219  0.48410313  0.19109060
+     [67]          NA -0.46432994          NA  0.69778032          NA          NA
+     [73]          NA  1.70004281          NA -0.87975921          NA  0.19923891
+     [79] -0.05508818 -2.21723277  0.02483067          NA          NA          NA
+     [85] -1.15808884 -1.89839064          NA -0.53997557 -0.93934967 -0.01158219
+     [91] -0.42007596 -1.84393515 -0.34638087  0.02976161  1.02870674          NA
+     [97]          NA          NA          NA          NA
 
 > Now that we’ve got NAs down pat, let’s look at a second type of
 > missing value – NaN, which | stands for ‘not a number’. To generate
