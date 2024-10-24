@@ -271,9 +271,9 @@ planes %>% arrange(year) %>% slice(1) %>% select(tailnum)
 #### 10. Какая средняя температура воздуха была в сентябре в аэропорту John FKennedy Intl (в градусах Цельсия).
 
 ``` r
-a<-weather %>% filter(!is.na(temp) & month == 9 & origin == 'JFK') %>%  summarize(ср=mean(temp))
-b<-(5/9)*(a-32)
-b
+weatherSeptF<-weather %>% filter(!is.na(temp) & month == 9 & origin == 'JFK') %>%  summarize(ср=mean(temp))
+weatherSeptC<-(5/9)*(weatherSeptF-32)
+weatherSeptC
 ```
 
             ср
@@ -281,7 +281,27 @@ b
 
 #### 11. Самолеты какой авиакомпании совершили больше всего вылетов в июне?
 
+``` r
+air<- flights %>% filter(!is.na(carrier) & month == 6 & !is.na(month)) %>% group_by(carrier) %>% summarise("coun"=n()) %>% arrange(desc(coun)) %>% slice(1) %>% select(carrier)
+airlines %>% filter(carrier == air$carrier) %>% select(name)
+```
+
+    # A tibble: 1 × 1
+      name                 
+      <chr>                
+    1 United Air Lines Inc.
+
 #### 12. Самолеты какой авиакомпании задерживались чаще других в 2013 году?
+
+``` r
+air<- flights %>% filter(!is.na(dep_delay) & year == 2013 & !is.na(arr_delay)) %>% group_by(carrier) %>% summarise("coun"=sum(arr_delay > 0)) %>% arrange(desc(coun)) %>% slice(1) %>% select(carrier)
+airlines %>% filter(carrier == air$carrier) %>% select(name)
+```
+
+    # A tibble: 1 × 1
+      name                    
+      <chr>                   
+    1 ExpressJet Airlines Inc.
 
 ## Оценка результата
 
