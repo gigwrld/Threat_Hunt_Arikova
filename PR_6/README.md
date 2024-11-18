@@ -42,6 +42,12 @@ Arikova Kristina
 работе
 №4](https://github.com/gigwrld/Threat_Hunt_Arikova/tree/main/PR_4).
 
+``` r
+print("Yandex Query is configured")
+```
+
+    [1] "Yandex Query is configured"
+
 ### Шаг 2. Настроить подключение к Yandex Query из DataLens
 
 Создано и настроено новое подключение датасета к Yandex Query из
@@ -49,8 +55,8 @@ DataLens.
 
 <figure>
 <img src="images/Подключение.png" data-fig-align="center"
-alt="Новое подключение" />
-<figcaption aria-hidden="true">Новое подключение</figcaption>
+alt="Рис. 1 - Новое подключение" />
+<figcaption aria-hidden="true">Рис. 1 - Новое подключение</figcaption>
 </figure>
 
 ### Шаг 3. Создать из запроса Yandex Query датасет DataLens
@@ -59,8 +65,8 @@ alt="Новое подключение" />
 
 <figure>
 <img src="images/Датасет.png" data-fig-align="center"
-alt="Содержимое датасета" />
-<figcaption aria-hidden="true">Содержимое датасета</figcaption>
+alt="Рис. 2 - Содержимое датасета" />
+<figcaption aria-hidden="true">Рис. 2 - Содержимое датасета</figcaption>
 </figure>
 
 ### Шаг 4. Решение аналитических задач
@@ -69,8 +75,8 @@ alt="Содержимое датасета" />
     внутреннего сетевого трафик
 
     <figure>
-    <img src="images/Сетевой%20трафик.png" alt="Сетевой трафик" />
-    <figcaption aria-hidden="true">Сетевой трафик</figcaption>
+    <img src="images/Сетевой%20трафик.png" alt="Рис. 3 - Сетевой трафик" />
+    <figcaption aria-hidden="true">Рис. 3 - Сетевой трафик</figcaption>
     </figure>
 
     В параметре ЦВЕТ представлена следующая функция на языке SQL:
@@ -85,8 +91,9 @@ alt="Содержимое датасета" />
 
     <figure>
     <img src="images/Трафик%20внутренней%20сети.png"
-    alt="Трафик внутренней сети" />
-    <figcaption aria-hidden="true">Трафик внутренней сети</figcaption>
+    alt="Рис. 4 - Трафик внутренней сети" />
+    <figcaption aria-hidden="true">Рис. 4 - Трафик внутренней
+    сети</figcaption>
     </figure>
 
     В качетве параметров Y и ПОДПИСИ выбрано количество байт
@@ -99,37 +106,26 @@ alt="Содержимое датасета" />
     времени.
 
     <figure>
-    <img src="images/Активность%20трафика.png" alt="Активность трафика" />
-    <figcaption aria-hidden="true">Активность трафика</figcaption>
+    <img src="images/Активность%20трафика.png"
+    alt="Рис. 5 - Активность трафика" />
+    <figcaption aria-hidden="true">Рис. 5 - Активность трафика</figcaption>
     </figure>
 
     В качетве параметра Y взято количество байт передаваемоего трафика,
     а в качетве пареметров X и ЦВЕТА и ФОРМЫ представлена следующая
     функция на языке SQL:
 
-    `IF`
-
-    `(([src] LIKE '12.%' OR [src] LIKE '13.%' OR [src] LIKE '14.%') AND (NOT([dst] LIKE '12.%' OR [dst] LIKE '13.%' OR [dst] LIKE '14.%')))`
-
-    `THEN "Исходящий трафик"`
-
-    `ELSEIF (([dst] LIKE '12.%' OR [dst] LIKE '13.%' OR [dst] LIKE '14.%') AND (NOT([src] LIKE '12.%' OR [src] LIKE '13.%' OR [src] LIKE '14.%')))`
-
-    `THEN "Входящий трафик"`
-
-    `ELSE "Остальной трафик"`
-
-    `END`
+    `IF (([src] LIKE '12.%' OR [src] LIKE '13.%' OR [src] LIKE '14.%') AND (NOT([dst] LIKE '12.%' OR [dst] LIKE '13.%' OR [dst] LIKE '14.%'))) THEN "Исходящий трафик" ELSEIF (([dst] LIKE '12.%' OR [dst] LIKE '13.%' OR [dst] LIKE '14.%') AND (NOT([src] LIKE '12.%' OR [src] LIKE '13.%' OR [src] LIKE '14.%'))) THEN "Входящий трафик" ELSE "Остальной трафик" END`
 
 4.  Все построенные графики выведены в виде единого дашборда в Yandex
     DataLens.
 
       
-    ![Дашборд - часть 1](images/Дашборд1.png)
+    ![Рис. 6 - Дашборд - часть 1](images/Дашборд1.png)
 
 <figure>
-<img src="images/Дашборд2.png" alt="Дашборд - часть 2" />
-<figcaption aria-hidden="true">Дашборд - часть 2</figcaption>
+<img src="images/Дашборд2.png" alt="Рис. 7 - Дашборд - часть 2" />
+<figcaption aria-hidden="true">Рис. 7 - Дашборд - часть 2</figcaption>
 </figure>
 
 ## Оценка результата
