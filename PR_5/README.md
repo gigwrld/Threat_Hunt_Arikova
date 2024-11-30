@@ -83,6 +83,9 @@ head(Data)
     доступа.  
     Разъеденим данные на два датасета.
 
+Readr является частью базовой библиотеки tidyverse, поэтому вы можете
+загрузить его с помощью:
+
 ``` r
 library(tidyverse)
 ```
@@ -277,20 +280,20 @@ access_points %>% filter(str_detect(access_points$Privacy, 'WPA3') == TRUE) %>% 
 которого они находились на связи, по убыванию.
 
 ``` r
-access_points %>% mutate(duration = as.numeric(difftime(Last.time.seen, First.time.seen, units = "mins"))) %>% arrange(desc(duration)) %>% select(BSSID, duration) %>% head(10)
+access_points %>% mutate(duration = as.numeric(difftime(Last.time.seen, First.time.seen, units = "secs"))) %>% arrange(desc(duration)) %>% select(BSSID, duration) %>% head(10)
 ```
 
                    BSSID duration
-    1  00:25:00:FF:94:73 163.2500
-    2  E8:28:C1:DD:04:52 162.9333
-    3  E8:28:C1:DC:B2:52 162.5833
-    4  08:3A:2F:56:35:FE 162.4333
-    5  6E:C7:EC:16:DA:1A 162.1500
-    6  E8:28:C1:DC:B2:50 162.1000
-    7  E8:28:C1:DC:B2:51 162.0833
-    8  48:5B:39:F9:7A:48 162.0833
-    9  E8:28:C1:DC:FF:F2 162.0667
-    10 8E:55:4A:85:5B:01 162.0500
+    1  00:25:00:FF:94:73     9795
+    2  E8:28:C1:DD:04:52     9776
+    3  E8:28:C1:DC:B2:52     9755
+    4  08:3A:2F:56:35:FE     9746
+    5  6E:C7:EC:16:DA:1A     9729
+    6  E8:28:C1:DC:B2:50     9726
+    7  E8:28:C1:DC:B2:51     9725
+    8  48:5B:39:F9:7A:48     9725
+    9  E8:28:C1:DC:FF:F2     9724
+    10 8E:55:4A:85:5B:01     9723
 
   
 Составлен топ-10 самых быстрых точек доступа.
@@ -314,20 +317,156 @@ access_points %>% arrange(desc(Speed)) %>%  select(BSSID, Speed) %>% head(10)
 Отсортированы точки доступа по частоте отправки запросов (beacons) в
 единицу времени по их убыванию.
 
+``` r
+access_points %>% mutate(duration = as.numeric(difftime(Last.time.seen, First.time.seen, units = "secs"))) %>% filter(as.integer(duration) != 0) %>% mutate(beacons_per_second = X..beacons / as.integer(duration)) %>% arrange(desc(beacons_per_second)) %>% select(BSSID, X..beacons, duration, beacons_per_second ) %>% head()
+```
+
+                  BSSID X..beacons duration beacons_per_second
+    1 F2:30:AB:E9:03:ED          6        7          0.8571429
+    2 B2:CF:C0:00:4A:60          4        5          0.8000000
+    3 3A:DA:00:F9:0C:02          5        9          0.5555556
+    4 02:BC:15:7E:D5:DC          1        2          0.5000000
+    5 00:3E:1A:5D:14:45          1        2          0.5000000
+    6 76:C5:A0:70:08:96          1        2          0.5000000
+
 ### Шаг 3. Анализ данных клиентов
 
-Обределены прозводители каждого обраруженного устройства.
+Определены производители каждого обраруженного устройства.
+
+``` r
+fabricator_client_MAC <- client_requests %>% select(BSSID) %>% filter(BSSID != "(not associated)" & !is.na(BSSID)) %>% arrange(BSSID)
+sapply(fabricator_client_MAC, function(i) substr(i, 1, 8)) %>% unique() 
+```
+
+          BSSID     
+     [1,] "00:03:7F"
+     [2,] "00:0D:97"
+     [3,] "00:23:EB"
+     [4,] "00:25:00"
+     [5,] "00:26:99"
+     [6,] "00:AB:0A"
+     [7,] "02:67:F1"
+     [8,] "08:3A:2F"
+     [9,] "0A:C5:E1"
+    [10,] "0C:80:63"
+    [11,] "12:48:F9"
+    [12,] "1E:93:E3"
+    [13,] "1E:C2:8E"
+    [14,] "22:C9:7F"
+    [15,] "2A:E8:A2"
+    [16,] "36:46:53"
+    [17,] "3A:70:96"
+    [18,] "3A:DA:00"
+    [19,] "4A:EC:1E"
+    [20,] "56:C5:2B"
+    [21,] "5E:C7:C0"
+    [22,] "6E:C7:EC"
+    [23,] "76:70:AF"
+    [24,] "7E:3A:10"
+    [25,] "82:CD:7D"
+    [26,] "86:DF:BF"
+    [27,] "8A:A3:03"
+    [28,] "8E:1F:94"
+    [29,] "8E:55:4A"
+    [30,] "92:12:38"
+    [31,] "92:F5:7B"
+    [32,] "96:FF:FC"
+    [33,] "9A:75:A8"
+    [34,] "9A:9F:06"
+    [35,] "A2:64:E8"
+    [36,] "A6:02:B9"
+    [37,] "AA:F4:3F"
+    [38,] "AE:3E:7F"
+    [39,] "AndroidS"
+    [40,] "B2:1B:0C"
+    [41,] "B6:C4:55"
+    [42,] "BE:F1:71"
+    [43,] "BE:FD:EF"
+    [44,] "CE:B3:FF"
+    [45,] "DC:09:4C"
+    [46,] "E0:D9:E3"
+    [47,] "E2:37:BF"
+    [48,] "E8:28:C1"
+    [49,] "EA:7B:9B"
+    [50,] "MIREA_HO"
+    [51,] "TP-Link_"
+
+    00:03:7F - Atheros Communications, Inc.
+
+    00:0D:97 - Hitachi Energy USA Inc.
+
+    00:23:EB - Cisco Systems, Inc
+
+    00:25:00 - Apple, Inc.
+
+    00:26:99 - Cisco Systems, Inc
+
+    08:3A:2F - Guangzhou Juan Intelligent Tech Joint Stock Co.,Ltd
+
+    0C:80:63 - Tp-Link Technologies Co.,Ltd.
+
+    DC:09:4C - Huawei Technologies Co.,Ltd
+
+    E0:D9:E3 - Eltex Enterprise Ltd.
+
+    E8:28:C1 - Eltex Enterprise Ltd.
+
+Остальные производители не были найдены с помощью интренет-ресурса
+[ouilookup.com](https://ouilookup.com/).
 
 Обнаружены устройства, которые НЕ рандомизируют свой MAC адрес.
 
+``` r
+non_randomized_devices <- client_requests %>% filter(!substr(Station.MAC, 2, 2) %in% c("2", "6", "A", "E"))  %>% select(Station.MAC) 
+head(non_randomized_devices)
+```
+
+            Station.MAC
+    1 5C:3A:45:9E:1A:7B
+    2 C0:E4:34:D8:E7:E5
+    3 10:51:07:CB:33:E7
+    4 68:54:5A:40:35:9E
+    5        Galaxy A71
+    6 74:4C:A1:70:CE:F7
+
 Кластеризованы запросы от устройств к точкам доступа по их именам.
+
+``` r
+grouped_data <- client_requests  %>%
+  group_by(Probed.ESSIDs) %>% summarize(
+    unique_devices = n_distinct(Station.MAC), 
+    first_time_seen = min(First.time.seen),  
+    last_time_seen = max(Last.time.seen)
+  )
+head(grouped_data)
+```
+
+    # A tibble: 6 × 4
+      Probed.ESSIDs           unique_devices first_time_seen     last_time_seen     
+      <chr>                            <int> <dttm>              <dttm>             
+    1 -D-13-                              16 2023-07-28 09:14:42 2023-07-28 10:26:42
+    2 1                                   31 2023-07-28 10:36:12 2023-07-28 11:56:13
+    3 107                                  1 2023-07-28 10:29:43 2023-07-28 10:29:43
+    4 531                                  1 2023-07-28 10:57:04 2023-07-28 10:57:04
+    5 AAAAAOB/CC0ADwGkRedmi …              3 2023-07-28 09:34:20 2023-07-28 11:44:40
+    6 AKADO-D967                           1 2023-07-28 10:31:55 2023-07-28 10:31:55
 
   
 Время появления устройства в зоне радиовидимости и время выхода его из
-нее.
+нее представлены в first_time_seen иlast_time_seen соответсвенно.
 
 Определена стабильность уровня сигнала внури кластера во времени.
 Выявлен наиболее стабильный кластер.
+
+``` r
+client_requests %>% mutate(duration = as.integer(difftime(Last.time.seen, First.time.seen))) %>% filter(duration != 0) %>% arrange(desc(duration)) %>%  filter(!is.na(Probed.ESSIDs)) %>%  group_by(Probed.ESSIDs) %>% summarise(Mean = mean(duration), Sd = sd(duration)) %>% filter(!is.na(Sd) & Sd != 0) %>%  arrange(Sd) %>% select(Probed.ESSIDs, Mean, Sd) %>%
+  head(1)
+```
+
+    # A tibble: 1 × 3
+      Probed.ESSIDs  Mean    Sd
+      <chr>         <dbl> <dbl>
+    1 nvripcsuite    9780  3.46
 
 ## Оценка результата
 
@@ -337,9 +476,9 @@ access_points %>% arrange(desc(Speed)) %>%  select(BSSID, Speed) %>% head(10)
 3.  Получены практические навыки использования функций обработки данных
     пакета dplyr
 4.  Закреплены знания основных функций обработки данных экосистемы
-    tidyverseязыка R
+    tidyverse языка R
 
 ## Вывод
 
-В результате выполнения работы были закреплены умения работы с основными
-инструментами обработки данных на языке R.
+В результате выполнения работы были закреплены умения работы с
+инструментами обработки и анализа данных на языке R.
