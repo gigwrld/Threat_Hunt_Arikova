@@ -1,26 +1,43 @@
 ---
 title: "Практика 008"
-format: html
-editor: visual
+author: "Arikova Kristina"
+date: "2024-11-05"
+format:
+  md:
+    output-file: "README.md"
+editor: "visual"
 ---
 
-## Quarto
+Анализ данных сетевого трафика с использованием\
+аналитической in-memory СУБД DuckDB.
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+## Цель
 
-## Running Code
+1.  Изучить возможности СУБД DuckDB для обработки и анализ больших данных
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+2.  Получить навыки применения DuckDB совместно с языком программирования R3.
 
-```{r}
-1 + 1
-```
+3.  Получить навыки анализа метаинфомации о сетевом трафике
 
-You can add options to executable code like this
+4.  Получить навыки применения облачных технологий хранения, подготовки и\
+    анализа данных: Yandex Object Storage, Rstudio Server.
 
-```{r}
-#| echo: false
-2 * 2
-```
+## Исходные данные
 
-The `echo: false` option disables the printing of code (only output is displayed).
+-   Компьютер
+
+-   ОС Windows
+
+-   Rstudio
+
+-   Github
+
+## Общий план выполнения
+
+## Содержание ЛР
+
+### Шаг 1. Подготовка данных
+
+## Оценка результата
+
+## Вывод
