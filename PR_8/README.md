@@ -31,9 +31,47 @@ Arikova Kristina
 
 ## Общий план выполнения
 
+1.  Подготовка рабочего окружения
+2.  Задание 1: Надите утечку данных из Вашей сети
+3.  Задание 2: Надите утечку данных 2
+4.  Задание 3: Надите утечку данных 3
+
 ## Содержание ЛР
 
-### Шаг 1. Подготовка данных
+### Шаг 1. Подготовка рабочего окружения
+
+``` r
+library(dplyr)
+```
+
+
+    Attaching package: 'dplyr'
+
+    The following objects are masked from 'package:stats':
+
+        filter, lag
+
+    The following objects are masked from 'package:base':
+
+        intersect, setdiff, setequal, union
+
+``` r
+library(DBI)
+```
+
+``` r
+library(duckdb)
+```
+
+``` r
+con <- duckdb::duckdb()
+```
+
+### Шаг 2. Надите утечку данных из Вашей сети
+
+### Шаг 3. Надите утечку данных 2
+
+### Шаг 4. Надите утечку данных 3
 
 ## Оценка результата
 
