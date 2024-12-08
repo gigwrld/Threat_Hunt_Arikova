@@ -58,9 +58,10 @@ head(Data)
 
 -   датасет 1 – анонсы беспроводных точек доступа;
 
--   датасет 2 – запросы на подключение клиентов к известным им точкам доступа.
-    \
+-   датасет 2 – запросы на подключение клиентов к известным им точкам доступа.\
     Разъеденим данные на два датасета.
+
+Readr является частью базовой библиотеки tidyverse, поэтому вы можете загрузить его с помощью:
 
 ```{r}
 library(tidyverse)
@@ -145,7 +146,7 @@ access_points %>% filter(str_detect(access_points$Privacy, 'WPA3') == TRUE) %>% 
 Отсортированы точки доступа по интервалу времени в минутах, в течение которого они находились на связи, по убыванию.
 
 ```{r}
-access_points %>% mutate(duration = as.numeric(difftime(Last.time.seen, First.time.seen, units = "mins"))) %>% arrange(desc(duration)) %>% select(BSSID, duration) %>% head(10)
+access_points %>% mutate(duration = as.numeric(difftime(Last.time.seen, First.time.seen, units = "secs"))) %>% arrange(desc(duration)) %>% select(BSSID, duration) %>% head(10)
 ```
 
 \
@@ -159,39 +160,73 @@ access_points %>% arrange(desc(Speed)) %>%  select(BSSID, Speed) %>% head(10)
 
 ```{r}
 
+access_points %>% mutate(duration = as.numeric(difftime(Last.time.seen, First.time.seen, units = "secs"))) %>% filter(as.integer(duration) != 0) %>% mutate(beacons_per_second = X..beacons / as.integer(duration)) %>% arrange(desc(beacons_per_second)) %>% select(BSSID, X..beacons, duration, beacons_per_second ) %>% head()
+
+
 ```
 
 ### Шаг 3. Анализ данных клиентов
 
-Обределены прозводители каждого обраруженного устройства.
+Определены производители каждого обраруженного устройства.
 
 ```{r}
-
+fabricator_client_MAC <- client_requests %>% select(BSSID) %>% filter(BSSID != "(not associated)" & !is.na(BSSID)) %>% arrange(BSSID)
+sapply(fabricator_client_MAC, function(i) substr(i, 1, 8)) %>% unique() 
 ```
+
+```         
+00:03:7F - Atheros Communications, Inc.
+
+00:0D:97 - Hitachi Energy USA Inc.
+
+00:23:EB - Cisco Systems, Inc
+
+00:25:00 - Apple, Inc.
+
+00:26:99 - Cisco Systems, Inc
+
+08:3A:2F - Guangzhou Juan Intelligent Tech Joint Stock Co.,Ltd
+
+0C:80:63 - Tp-Link Technologies Co.,Ltd.
+
+DC:09:4C - Huawei Technologies Co.,Ltd
+
+E0:D9:E3 - Eltex Enterprise Ltd.
+
+E8:28:C1 - Eltex Enterprise Ltd.
+```
+
+Остальные производители не были найдены с помощью интренет-ресурса [ouilookup.com](https://ouilookup.com/).
 
 Обнаружены устройства, которые НЕ рандомизируют свой MAC адрес.
 
 ```{r}
+non_randomized_devices <- client_requests %>% filter(!substr(Station.MAC, 2, 2) %in% c("2", "6", "A", "E"))  %>% select(Station.MAC) 
+head(non_randomized_devices)
+
 
 ```
 
 Кластеризованы запросы от устройств к точкам доступа по их именам.
 
 ```{r}
-
+grouped_data <- client_requests  %>%
+  group_by(Probed.ESSIDs) %>% summarize(
+    unique_devices = n_distinct(Station.MAC), 
+    first_time_seen = min(First.time.seen),  
+    last_time_seen = max(Last.time.seen)
+  )
+head(grouped_data)
 ```
 
 \
-Время появления устройства в зоне радиовидимости и время выхода его из нее.
-
-```{r}
-
-```
+Время появления устройства в зоне радиовидимости и время выхода его из нее представлены в first_time_seen иlast_time_seen соответсвенно.
 
 Определена стабильность уровня сигнала внури кластера во времени. Выявлен наиболее стабильный кластер.
 
 ```{r}
-
+client_requests %>% mutate(duration = as.integer(difftime(Last.time.seen, First.time.seen))) %>% filter(duration != 0) %>% arrange(desc(duration)) %>%  filter(!is.na(Probed.ESSIDs)) %>%  group_by(Probed.ESSIDs) %>% summarise(Mean = mean(duration), Sd = sd(duration)) %>% filter(!is.na(Sd) & Sd != 0) %>%  arrange(Sd) %>% select(Probed.ESSIDs, Mean, Sd) %>%
+  head(1)
 ```
 
 ## Оценка результата
@@ -199,8 +234,8 @@ access_points %>% arrange(desc(Speed)) %>%  select(BSSID, Speed) %>% head(10)
 1.  Получены практические навыки использования языка программирования R для обработки данных
 2.  Закреплены знания базовых типов данных языка R
 3.  Получены практические навыки использования функций обработки данных пакета dplyr
-4.  Закреплены знания основных функций обработки данных экосистемы tidyverseязыка R
+4.  Закреплены знания основных функций обработки данных экосистемы tidyverse языка R
 
 ## Вывод
 
-В результате выполнения работы были закреплены умения работы с основными инструментами обработки данных на языке R.
+В результате выполнения работы были закреплены умения работы с инструментами обработки и анализа данных на языке R.
