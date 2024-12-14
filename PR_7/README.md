@@ -160,7 +160,20 @@ ggplot(working_hours, aes(x = hour, y = total_bytes)) +
 
 Определены нерабочие часы: 00:00 - 15:00.
 
-**Ответ: 12.55.77.96**
+``` r
+result <- df %>% mutate(time = as.POSIXct(df$timestamp)) %>%  mutate(hour = hour(time))  %>% filter(src != '13.37.84.125') %>% filter(str_detect(src, "^((12|13|14)\\.)")) %>% filter(!str_detect(dst, "^((12|13|14)\\.)")) %>%  filter(hour >= 0 & hour <= 15) %>%
+  group_by(src) %>%
+  summarise(total_bytes = sum(bytes)) %>%
+  arrange(desc(total_bytes))
+head(result, 1)
+```
+
+    # A tibble: 1 × 2
+      src         total_bytes
+      <chr>             <int>
+    1 13.48.72.30  1150750872
+
+**Ответ: 13.48.72.30 ???**
 
 ### Шаг 4. Надите утечку данных 3
 
