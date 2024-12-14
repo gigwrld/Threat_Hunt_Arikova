@@ -128,6 +128,9 @@ alt="Рис. 2 - Содержимое датасета" />
 <figcaption aria-hidden="true">Рис. 7 - Дашборд - часть 2</figcaption>
 </figure>
 
+Ссылка на дашборд:
+https://datalens.yandex.cloud/s6j1qqn2mhzif-dashboard-arikova
+
 ## Оценка результата
 
 Изучены возможности технологии Yandex Query для анализа
