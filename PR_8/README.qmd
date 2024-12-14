@@ -58,7 +58,7 @@ library(duckdb)
 ```
 
 ```{r}
-download.file('https://storage.yandexcloud.net/arrow-datasets/tm_data.pqt', destfile = "tm_data.pqt")
+#download.file('https://storage.yandexcloud.net/arrow-datasets/tm_data.pqt', destfile = "tm_data.pqt")
 ```
 
 ```{r}
@@ -91,7 +91,7 @@ ORDER BY sum(bytes) DESC LIMIT 1")
 Определим нерабочие часы системы:
 
 ```{r}
-dbGetQuery(con,
+working_hours <- dbGetQuery(con,
 "SELECT time, SUM(bytes) AS trafic FROM (
     SELECT 
         (src LIKE '12.%' OR src LIKE '13.%' OR src LIKE '14.%') AND NOT (dst LIKE '12.%' AND dst LIKE '13.%' AND dst LIKE '14.%') AS ip,
@@ -101,6 +101,16 @@ dbGetQuery(con,
 ) sub
 GROUP BY time
 ORDER BY trafic")
+```
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+ggplot(working_hours, aes(x = time, y = trafic)) +
+  geom_line() +
+  labs(title = "Общее количество переданных байтов по часам", x = "Час", y = "Объем трафика (байты)")
 ```
 
 Нерабочие часы: 00:00 - 15:00.

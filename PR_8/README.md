@@ -66,7 +66,7 @@ library(duckdb)
 ```
 
 ``` r
-download.file('https://storage.yandexcloud.net/arrow-datasets/tm_data.pqt', destfile = "tm_data.pqt")
+#download.file('https://storage.yandexcloud.net/arrow-datasets/tm_data.pqt', destfile = "tm_data.pqt")
 ```
 
 ``` r
@@ -112,7 +112,7 @@ ORDER BY sum(bytes) DESC LIMIT 1")
 Определим нерабочие часы системы:
 
 ``` r
-dbGetQuery(con,
+working_hours <- dbGetQuery(con,
 "SELECT time, SUM(bytes) AS trafic FROM (
     SELECT 
         (src LIKE '12.%' OR src LIKE '13.%' OR src LIKE '14.%') AND NOT (dst LIKE '12.%' AND dst LIKE '13.%' AND dst LIKE '14.%') AS ip,
@@ -124,31 +124,17 @@ GROUP BY time
 ORDER BY trafic")
 ```
 
-       time       trafic
-    1     5  10296318981
-    2    15  10297437556
-    3    11  10306926607
-    4    10  10320411897
-    5     1  10324774067
-    6     0  10338294625
-    7     3  10339156776
-    8     9  10339532889
-    9     6  10341154093
-    10    4  10342139110
-    11    2  10348973271
-    12   14  10364491597
-    13   13  10371351608
-    14   12  10378106957
-    15    8  10471822189
-    16    7  10566144869
-    17   17 273636993943
-    18   19 273843857318
-    19   22 273865554455
-    20   21 273870082226
-    21   20 273906852618
-    22   16 273911433028
-    23   18 273957078313
-    24   23 274018545181
+``` r
+library(ggplot2)
+```
+
+``` r
+ggplot(working_hours, aes(x = time, y = trafic)) +
+  geom_line() +
+  labs(title = "Общее количество переданных байтов по часам", x = "Час", y = "Объем трафика (байты)")
+```
+
+![](README.markdown_strict_files/figure-markdown_strict/unnamed-chunk-9-1.png)
 
 Нерабочие часы: 00:00 - 15:00.
 
