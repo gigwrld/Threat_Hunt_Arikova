@@ -11,7 +11,7 @@ Arikova Kristina
     данных
 
 2.  Получить навыки применения DuckDB совместно с языком
-    программирования R3.
+    программирования R.
 
 3.  Получить навыки анализа метаинфомации о сетевом трафике
 
@@ -166,8 +166,57 @@ LIMIT 1;
 которое нехарактерно для других хостов, использующих этот номер порта.  
 Определите IP этой системы.
 
-  
+``` r
+dbGetQuery(con,"
+SELECT port, MEDIAN(bytes) AS med, MAX(bytes) AS max, MAX(bytes) - MEDIAN(bytes) AS razn
+FROM df
+WHERE 
+    (src LIKE '12.%' OR src LIKE '13.%' OR src LIKE '14.%')
+    AND src NOT IN ('13.37.84.125', '12.55.77.96')
+    AND (dst NOT LIKE '12.%' AND dst NOT LIKE '13.%' AND dst NOT LIKE '14.%')
+GROUP BY port
+ORDER BY razn DESC
+LIMIT 10")
+```
+
+       port     med    max     razn
+    1    37 30669.0 209402 178733.0
+    2    39 30713.0 198527 167814.0
+    3   105 30598.5 197766 167167.5
+    4    40 30579.0 195144 164565.0
+    5    75 30685.0 194650 163965.0
+    6    89 30628.0 194106 163478.0
+    7   102 30645.0 193588 162943.0
+    8    81 30721.0 192430 161709.0
+    9   119 30623.0 190151 159528.0
+    10   74 30679.0 189818 159139.0
+
+Наибольшая разница между медианой и максимальным значением у порта 37.
+Рассмотрим количество трафика у IP, передаваемый через порт 37  
+
+``` r
+dbGetQuery(con,"
+SELECT src, SUM(bytes) AS traffic, COUNT(*) AS count, SUM(bytes) / COUNT(*) AS avg, MEDIAN(bytes) AS med
+FROM df
+WHERE (src LIKE '12.%' OR src LIKE '13.%' OR src LIKE '14.%')
+    AND src NOT IN ('13.37.84.125', '12.55.77.96')
+    AND (dst NOT LIKE '12.%' AND dst NOT LIKE '13.%' AND dst NOT LIKE '14.%')
+    AND port = 37
+GROUP BY src
+ORDER BY med DESC
+LIMIT 1")
+```
+
+               src traffic count     avg   med
+    1 14.31.107.42 1288614    30 42953.8 43732
+
+**Ответ: 14.31.107.42**
 
 ## Оценка результата
 
+Получены практические навыки работы с DuckDB совместно с языком
+программирования R для обработки и анализ больших данных.
+
 ## Вывод
+
+Проведен анализ метаинфомации о сетевом трафике.
