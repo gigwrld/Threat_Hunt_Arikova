@@ -160,20 +160,7 @@ ggplot(working_hours, aes(x = hour, y = total_bytes)) +
 
 Определены нерабочие часы: 00:00 - 15:00.
 
-``` r
-leakage2 <- df %>% mutate(time = as.POSIXct(df$timestamp)) %>% mutate(hour = hour(time)) %>% filter( hour >= 0 & hour <= 15, grepl("^(12|13|14)\\.", src), src != '13.37.84.125') %>% group_by(src) %>% summarise(total_bytes = sum(bytes, na.rm = TRUE)) %>% slice_max(total_bytes)
-```
-
-``` r
-leakage2
-```
-
-    # A tibble: 1 × 2
-      src         total_bytes
-      <chr>             <int>
-    1 12.59.25.34  1363015220
-
-**Ответ: 12.59.25.34**
+**Ответ: 12.55.77.96**
 
 ### Шаг 4. Надите утечку данных 3
 
@@ -186,21 +173,48 @@ leakage2
 нарушителей из предыдущих задач.
 
 ``` r
-ip_traffic <- df %>%
+port_traf <- df %>% 
+  select(src, port, bytes, dst) %>% filter(grepl("^(12|13|14)\\.", src), src != '13.37.84.125', src != '12.55.77.96', !str_detect(dst, "^((12|13|14)\\.)")) %>% 
   group_by(port) %>%
-  summarise(
-    total_bytes = sum(bytes, na.rm = TRUE),
-    src_ips = paste(unique(src), collapse = "; "),
-    dst_ips = paste(unique(dst), collapse = "; ")
-  ) %>%
-  arrange(desc(total_bytes))
-head(ip_traffic, 1)
+  summarise(med = median(bytes), max = max(bytes), razn = max - med) %>%
+  arrange(desc(razn))
+
+head(port_traf, 10)
 ```
 
-    # A tibble: 1 × 4
-       port  total_bytes src_ips                                             dst_ips
-      <int>        <dbl> <chr>                                               <chr>  
-    1    81 110470590014 18.71.119.35; 14.32.60.40; 12.38.28.117; 19.84.118… 12.43.…
+    # A tibble: 10 × 4
+        port    med    max    razn
+       <int>  <dbl>  <int>   <dbl>
+     1    37 30669  209402 178733 
+     2    39 30713  198527 167814 
+     3   105 30598. 197766 167168.
+     4    40 30579  195144 164565 
+     5    75 30685  194650 163965 
+     6    89 30628  194106 163478 
+     7   102 30645  193588 162943 
+     8    81 30721  192430 161709 
+     9   119 30623  190151 159528 
+    10    74 30679  189818 159139 
+
+Наибольшая разница между медианой и максимальным значением у порта 37.
+Рассмотрим количество трафика у IP, передаваемый через порт 37.
+
+``` r
+port37<- df %>% 
+  select(src, port, bytes, dst) %>%  filter(grepl("^(12|13|14)\\.", src), src != '13.37.84.125', src != '12.55.77.96', !str_detect(dst, "^((12|13|14)\\.)")) %>% 
+  filter(port == 37) %>% 
+  group_by(src) %>%
+  summarise(traffic = sum(bytes), count = n(), avg = traffic/count, med = median(bytes)) %>%
+  arrange(desc(med))
+head(port37, 1)
+```
+
+    # A tibble: 1 × 5
+      src          traffic count    avg   med
+      <chr>          <int> <int>  <dbl> <dbl>
+    1 14.31.107.42 1288614    30 42954. 43732
+
+**Ответ: 14.31.107.42**
 
 ## Оценка результата
 
