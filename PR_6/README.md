@@ -129,7 +129,7 @@ alt="Рис. 2 - Содержимое датасета" />
 </figure>
 
 Ссылка на дашборд:
-https://datalens.yandex.cloud/s6j1qqn2mhzif-dashboard-arikova
+https://datalens.yandex/s6j1qqn2mhzif
 
 ## Оценка результата
 
