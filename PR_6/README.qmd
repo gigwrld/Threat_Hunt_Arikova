@@ -87,12 +87,11 @@ print("Yandex Query is configured")
 
 4.  Все построенные графики выведены в виде единого дашборда в Yandex DataLens.
 
-    \
-    ![Рис. 6 - Дашборд - часть 1](images/Дашборд1.png)
+![Рис. 6 - Дашборд - часть 1](images/Дашборд1.png)
 
 ![Рис. 7 - Дашборд - часть 2](images/Дашборд2.png)
 
-Ссылка на дашборд: https://datalens.yandex/s6j1qqn2mhzif 
+Ссылка на дашборд: https://datalens.yandex.cloud/s6j1qqn2mhzif-dashboard-arikova
 
 ## Оценка результата
 
